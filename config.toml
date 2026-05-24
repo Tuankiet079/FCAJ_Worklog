@@ -1,7 +1,7 @@
 baseURL = "https://sukem0703.github.io/FCAJ_Worklog/"
-relativeURLs = true
-canonifyURLs = true
-defaultContentLanguage = "en"
+relativeURLs = false
+canonifyURLs = false
+defaultContentLanguage = "vi"
 
 # Change the default theme to be use when building the site with Hugo
 theme = "hugo-theme-learn"
