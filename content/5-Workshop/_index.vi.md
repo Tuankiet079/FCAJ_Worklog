@@ -1,33 +1,28 @@
 ---
 title: "Workshop"
-date: 2024-01-01
+date: 2026-06-18
 weight: 5
 chapter: false
 pre: " <b> 5. </b> "
 ---
 
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
-
-
-# Đảm bảo truy cập Hybrid an toàn đến S3 bằng cách sử dụng VPC endpoint
+# Nghiên cứu và Triển khai Hệ thống Máy chủ cho Trò chơi Trực tuyến
 
 #### Tổng quan
 
-**AWS PrivateLink** cung cấp kết nối riêng tư đến các dịch vụ aws từ VPCs hoặc trung tâm dữ liệu (on-premise) mà không làm lộ lưu lượng truy cập ra ngoài public internet.
+Hệ thống máy chủ xử lý dữ liệu đóng vai trò cốt lõi trong việc quản lý trạng thái, đồng bộ dữ liệu thời gian thực và bảo mật thông tin người chơi. Đối với các dòng game có tần suất tương tác liên tục, việc tối ưu hóa hạ tầng để đạt độ trễ tối thiểu và khả năng chịu tải linh hoạt là yếu tố quyết định trải nghiệm người dùng.
 
-Trong bài lab này, chúng ta sẽ học cách tạo, cấu hình, và kiểm tra VPC endpoints để cho phép workload của bạn tiếp cận các dịch vụ AWS mà không cần đi qua Internet công cộng.
+Trong đề tài này, chúng ta sẽ nghiên cứu cách thiết kế, cấu hình và triển khai một kiến trúc máy chủ toàn diện trên nền tảng điện toán đám mây đám mây AWS, kết hợp các giải pháp lưu trữ tối ưu nhằm đảm bảo an toàn dữ liệu và tối ưu hóa chi phí vận hành.
 
-Chúng ta sẽ tạo hai loại endpoints để truy cập đến Amazon S3: gateway vpc endpoint và interface vpc endpoint. Hai loại vpc endpoints này mang đến nhiều lợi ích tùy thuộc vào việc bạn truy cập đến S3 từ môi trường cloud hay từ trung tâm dữ liệu (on-premise).
-+ **Gateway** - Tạo gateway endpoint để gửi lưu lượng đến Amazon S3 hoặc DynamoDB using private IP addresses. Bạn điều hướng lưu lượng từ VPC của bạn đến gateway endpoint bằng các bảng định tuyến (route tables)
-+ **Interface** - Tạo interface endpoint để gửi lưu lượng đến các dịch vụ điểm cuối (endpoints) sử dụng Network Load Balancer để phân phối lưu lượng. Lưu lượng dành cho dịch vụ điểm cuối được resolved bằng DNS.
+Hệ thống phân tách luồng dữ liệu và xử lý thành hai mô hình chiến lược tùy thuộc vào đặc thù luồng traffic:
++ **Cơ chế xử lý đồng bộ (Compute Layer)** - Sử dụng máy chủ trung gian phối hợp với hệ thống cân bằng tải để điều phối các truy vấn API dạng văn bản, hoặc chuyển dịch sang kiến trúc phi máy chủ để tự động co giãn theo lượng người chơi trong thời gian thực.
++ **Cơ chế lưu trữ đa tầng (Database Layer)** - Phân cấp dữ liệu thông qua hệ quản trị cơ sở dữ liệu quan hệ bảo mật cao đặt trong phân vùng mạng riêng tư, kết hợp lớp bộ nhớ đệm để giảm tải và tăng tốc độ phản hồi cho các tác vụ đọc/ghi lặp đi lặp lại.
 
 #### Nội dung
 
-1. [Tổng quan về workshop](5.1-Workshop-overview/)
-2. [Chuẩn bị](5.2-Prerequiste/)
-3. [Truy cập đến S3 từ VPC](5.3-S3-vpc/)
-4. [Truy cập đến S3 từ TTDL On-premises](5.4-S3-onprem/)
-5. [VPC Endpoint Policies (làm thêm)](5.5-Policy/)
-6. [Dọn dẹp tài nguyên](5.6-Cleanup/)
+1. [Tổng quan về kiến trúc hệ thống](5.1-architecture-overview/)
+2. [Khởi tạo Hạ tầng Cơ sở và Quản lý](5.2-vpc-security-setup/)
+3. [Xây dựng Cơ sở dữ liệu và Sao lưu](5.3-application-server-deploy/)
+4. [Cấu hình hệ quản trị cơ sở dữ liệu và lớp bộ nhớ đệm](5.4-database-cache-config/)
+5. [Tối ưu hóa chi phí và giám sát hệ thống bằng aws budgets](5.5-cost-monitoring/)
+6. [Thử nghiệm hiệu năng và dọn dẹp tài nguyên](5.6-testing-cleanup/)
