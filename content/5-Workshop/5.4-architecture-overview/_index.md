@@ -1,5 +1,5 @@
 ---
-title : "Architecture Overview"
+title : "Project Architecture"
 date : 2024-01-01
 weight : 4
 chapter : false

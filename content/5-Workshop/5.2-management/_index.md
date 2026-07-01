@@ -1,5 +1,5 @@
 ---
-title : "Prerequiste"
+title : "Infrastructure Setup and Management"
 date : 2024-01-01 
 weight : 2 
 chapter : false

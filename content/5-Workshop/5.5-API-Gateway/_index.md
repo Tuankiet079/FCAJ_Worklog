@@ -1,5 +1,5 @@
 ---
-title : "Access S3 from On-premises"
+title : "Amazon API Gateway Setup"
 date : 2024-01-01
 weight : 5
 chapter : false
