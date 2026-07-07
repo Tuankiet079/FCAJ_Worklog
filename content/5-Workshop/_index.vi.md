@@ -29,6 +29,5 @@ Hệ thống phân tách luồng dữ liệu và xử lý thành hai mô hình c
 4. [Kiến trúc dự án](5.4-architecture-overview/)
 5. [Khởi tạo Amazon API Gateway](5.5-API-Gateway/)
 6. [Compute Sync — Xử Lý Real-Time với Lambda](5.6-compute-sync/)
-7. [Compute Async — Xử Lý Bất Đồng Bộ với SQS](5.7-compute-async/)
-8. [Amazon SQS FIFO](5.8-sqs-fifo/)
+7. [Amazon SQS FIFO](5.7-sqs-fifo/)
 

@@ -1,9 +1,9 @@
 ---
 title : "Amazon SQS FIFO"
 date : 2024-01-01
-weight : 8
+weight : 7
 chapter : false
-pre : " <b> 5.8. </b> "
+pre : " <b> 5.7. </b> "
 ---
 
 #### Amazon SQS FIFO

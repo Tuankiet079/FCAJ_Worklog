@@ -13,10 +13,10 @@ pre: " <b> 5.6. </b> "
 
 **lambda-transaction** là *Dependent Service* — cần gọi Economy (trừ tiền) và Inventory (thêm item), phải deploy sau.
 
-- **lambda-auth** (Xác thực người dùng): `POST /Accounts/Create`, `POST /Accounts/Login`, `GET /Accounts/Dashboard` — Phụ thuộc: None
-- **lambda-inventory** (Kho đồ, Rương, Trang bị): `GET /Inventory/sync`, `POST /Inventory/add`, `POST /Inventory/equip`, `POST /Storage/deposit`, `POST /Storage/withdraw` — Phụ thuộc: None
-- **lambda-economy** (Quản lý tiền tệ - Coin, Gem): `GET /Economy/balance`, `POST /Economy/spend`, `POST /Economy/earn` — Phụ thuộc: None
-- **lambda-transaction** (Shop, Gift Code): `GET /Shop/items`, `POST /Shop/buy`, `GET /GiftCodes/live`, `POST /GiftCodes/redeem` — Phụ thuộc: Economy, Inventory
+- **lambda-auth** (Xác thực người dùng): POST /Accounts/Create, POST /Accounts/Login, GET /Accounts/Dashboard — Phụ thuộc: None
+- **lambda-inventory** (Kho đồ, Rương, Trang bị): GET /Inventory/sync, POST /Inventory/add, POST /Inventory/equip, POST /Storage/deposit, POST /Storage/withdraw — Phụ thuộc: None
+- **lambda-economy** (Quản lý tiền tệ - Coin, Gem): GET /Economy/balance, POST /Economy/spend, POST /Economy/earn — Phụ thuộc: None
+- **lambda-transaction** (Shop, Gift Code): GET /Shop/items, POST /Shop/buy, GET /GiftCodes/live, POST /GiftCodes/redeem — Phụ thuộc: Economy, Inventory
 
 ---
 
@@ -63,11 +63,11 @@ custom:
     target: node20
 ```
 
-→ Cấu hình serverless.yml cho mỗi Lambda service: runtime node20, IAM role cho RDS IAM Auth, dùng serverless-esbuild để bundle TypeScript thành 1 file. **Không có `events`** vì API Gateway tập trung gọi qua Lambda Integration.
+→ Cấu hình serverless.yml cho mỗi Lambda service: runtime node20, IAM role cho RDS IAM Auth, dùng serverless-esbuild để bundle TypeScript thành 1 file. **Không có events** vì API Gateway tập trung gọi qua Lambda Integration.
 
 ##### Setup API Gateway tập trung
 
-File `api-gateway/serverless.yml` định nghĩa HTTP API V2 và route từng path đến Lambda tương ứng:
+File api-gateway/serverless.yml định nghĩa HTTP API V2 và route từng path đến Lambda tương ứng:
 
 ```yaml
 # api-gateway/serverless.yml
@@ -201,12 +201,12 @@ Outputs:
 
 API Gateway tập trung định tuyến dựa trên path pattern:
 
-- `ANY /Accounts/{proxy+}` → `gameapi-auth-dev-api`
-- `ANY /Inventory/{proxy+}` → `gameapi-inventory-dev-api`
-- `ANY /Storage/{proxy+}` → `gameapi-inventory-dev-api`
-- `ANY /Economy/{proxy+}` → `gameapi-economy-dev-api`
-- `ANY /Shop/{proxy+}` → `gameapi-transaction-dev-api`
-- `ANY /GiftCodes/{proxy+}` → `gameapi-transaction-dev-api`
+- ANY /Accounts/{proxy+} → gameapi-auth-dev-api
+- ANY /Inventory/{proxy+} → gameapi-inventory-dev-api
+- ANY /Storage/{proxy+} → gameapi-inventory-dev-api
+- ANY /Economy/{proxy+} → gameapi-economy-dev-api
+- ANY /Shop/{proxy+} → gameapi-transaction-dev-api
+- ANY /GiftCodes/{proxy+} → gameapi-transaction-dev-api
 
 Mỗi Lambda được deploy **không kèm API Gateway riêng** — chỉ là function + handler. API Gateway là điểm vào duy nhất.
 
@@ -214,7 +214,7 @@ Mỗi Lambda được deploy **không kèm API Gateway riêng** — chỉ là fu
 
 #### 5.6.3 Cross-Service Communication (Đồng Bộ)
 
-Khi một Lambda cần gọi service khác, nó gọi qua API Gateway (không gọi trực tiếp Lambda). Dependent service cần được setup thêm `API_GATEWAY_URL` trong env.
+Khi một Lambda cần gọi service khác, nó gọi qua API Gateway (không gọi trực tiếp Lambda). Dependent service cần được setup thêm API_GATEWAY_URL trong env.
 
 ##### Setup env cho Dependent Service
 
@@ -247,7 +247,7 @@ functions:
     memorySize: 512
 ```
 
-→ Dependent service cần thêm `API_GATEWAY_URL` trong `environment` để biết đường gọi cross-service.
+→ Dependent service cần thêm API_GATEWAY_URL trong environment để biết đường gọi cross-service.
 
 ##### Code cross-service call (ApiClient)
 
@@ -351,7 +351,7 @@ await ApplicationDbContext.manager.transaction(async (manager) => {
 
 → Trong 1 transaction: UPDATE số dư (trừ tiền) + INSERT item mới. Đảm bảo cả 2 cùng thành công hoặc cùng rollback.
 
-**Đặc điểm:** Mỗi request chỉ đọc/ghi 1-3 dòng. Index đầy đủ trên `accountId`, `itemId`. Query ngắn, không JOIN phức tạp. Response time target < 500ms.
+**Đặc điểm:** Mỗi request chỉ đọc/ghi 1-3 dòng. Index đầy đủ trên accountId, itemId. Query ngắn, không JOIN phức tạp. Response time target < 500ms.
 
 ---
 
@@ -396,7 +396,7 @@ echo "API Endpoint: $(cd api-gateway && npx serverless@3 info --conceal | grep '
 
 ##### Lambda handler entry point
 
-Mỗi service dùng `@vendia/serverless-express` để wrap Express app:
+Mỗi service dùng @vendia/serverless-express để wrap Express app:
 
 ```typescript
 // services/lambda-auth/src/lambda.ts
@@ -413,4 +413,4 @@ export const handler = async (event, context) => {
 };
 ```
 
-→ Wrap Express app bằng `@vendia/serverless-express`. Instance được tạo 1 lần duy nhất và cache ở global scope (Lambda warm start), giúp giảm cold start đáng kể.
+→ Wrap Express app bằng @vendia/serverless-express. Instance được tạo 1 lần duy nhất và cache ở global scope (Lambda warm start), giúp giảm cold start đáng kể.
