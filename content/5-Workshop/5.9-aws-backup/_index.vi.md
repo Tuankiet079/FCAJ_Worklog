@@ -13,278 +13,296 @@ pre: " <b> 5.9. </b> "
 
 #### 5.9.2 Kiến trúc AWS Backup
 
-- **Backup Vault**: Nơi lưu trữ các bản sao lưu, có thể được mã hóa và quản lý quyền truy cập.
-- **Backup Plan**: Định nghĩa lịch sao lưu, cửa sổ bảo trì, và chính sách retention (giữ lại bao lâu).
-- **Backup Rule**: Mỗi Backup Plan chứa một hoặc nhiều rules, mỗi rule chỉ định:
-  - Lịch schedule (cron expression)
-  - Backup Vault đích
-  - Lifecycle rules (chuyển sang cold storage và hết hạn)
-- **Resource Assignment**: Gán Backup Plan vào các tài nguyên (RDS, DynamoDB, S3, EFS, EC2, ...).
+![1783878044406](image/_index.vi/1783878044406.png)
 
-#### 5.9.3 AWS Backup trong dự án FCAJ
+<div align="center"><i>Hình 5.9.1: Kiến trúc hệ thống AWS Backup.</i></div>
 
-Kiến trúc sao lưu sử dụng **AWS Backup** để tự động sao lưu toàn bộ dữ liệu game:
+Workflow backup :
 
-![Backup Architecture](image/_index.vi/backup-architecture.png)
+* **Backup Plan** kích hoạt theo lịch đã cấu hình (Daily/Weekly).
+* **AWS Backup** tự động sao lưu  **Amazon Aurora PostgreSQL** .
+* Bản sao lưu được lưu trong **Backup Vault** và tạo  **Recovery Point** .
+* Khi cần khôi phục, **Restore Job** sử dụng **Recovery Point** để tạo  **Aurora PostgreSQL (Restored Cluster)** .
+* **Amazon CloudWatch** giám sát các Backup/Restore Job và kích hoạt **Alarm** khi có lỗi.
+* **Amazon SNS** gửi thông báo cảnh báo đến **Email** của quản trị viên.
 
-<div align="center"><i>Hình 5.9.1: Sơ đồ kiến trúc AWS Backup.</i></div>
+Quy trình backup hoạt động như sau:
 
-##### Các tài nguyên được sao lưu
+**Hàng ngày lúc 05:00 UTC** — AWS Backup kích hoạt snapshot toàn bộ Aurora cluster.
 
-| Tài nguyên | Dịch vụ | Mục đích |
-|---|---|---|
-| **Aurora PostgreSQL** | RDS | Dữ liệu game (người chơi, inventory, giao dịch) |
-| **DynamoDB** | DynamoDB | Leaderboard, session data |
-| **EFS** | EFS | Media assets, logs |
-| **S3** | S3 | Backup files, static assets |
+- Snapshot được mã hóa bằng KMS key và lưu vào vault.
+- Snapshot được giữ lại **14 ngày**, sau đó tự động xóa.
 
-##### Backup Plan
+**Chủ nhật hàng tuần lúc 05:00 UTC** — AWS Backup tạo snapshot weekly.
 
-```YAML
-BackupPlanName: FCAJ-Backup-Plan
-Rules:
-  - RuleName: DailyBackup
-    ScheduleExpression: cron(0 6 ? * * *)
-    StartWindowMinutes: 60
-    CompletionWindowMinutes: 480
-    Lifecycle:
-      DeleteAfterDays: 35
-      MoveToColdStorageAfterDays: 7
-    TargetBackupVault: FCAJ-Backup-Vault
-    CopyActions:
-      - DestinationBackupVaultArn: arn:aws:backup:ap-southeast-1:xxx:backup-vault:FCAJ-Backup-Vault-Dr
-        Lifecycle:
-          DeleteAfterDays: 90
-          MoveToColdStorageAfterDays: 30
-  - RuleName: WeeklyBackup
-    ScheduleExpression: cron(0 8 ? * SUN *)
-    StartWindowMinutes: 60
-    CompletionWindowMinutes: 720
-    Lifecycle:
-      DeleteAfterDays: 90
-      MoveToColdStorageAfterDays: 30
-    TargetBackupVault: FCAJ-Backup-Vault
+- Snapshot được giữ lại **56 ngày** (8 tuần), sau đó tự động xóa.
+
+**Khi backup hoàn tất hoặc thất bại** — SNS Topic nhận event và gửi thông báo.
+
+**CloudWatch Alarm** — cảnh báo ngay lập tức nếu có backup/restore job failed.
+
+#### 5.9.3 Tạo Backup Vault & KMS Key
+
+##### Cấu trúc thư mục
+
+```
+services/aws-backup-infrastructure/
+├── serverless.yml    # CloudFormation: vault, plan, selection, IAM, alarm
 ```
 
-#### 5.9.4 Triển khai AWS Backup với Terraform
+##### KMS Key
 
-##### Khai báo Backup Vault
+Backup vault sử dụng KMS CMK (Customer Managed Key) riêng:
 
-File: `infrastructure/terraform/modules/backup/main.tf`
+```yaml
+BackupKmsKey:
+  Type: AWS::KMS::Key
+  Properties:
+    Description: KMS key for GameAPI Aurora backup vault encryption
+    Enabled: true
+    KeyPolicy:
+      Statement:
+        - Sid: EnableAdminPermissions
+          Effect: Allow
+          Principal:
+            AWS: !Sub arn:aws:iam::${AWS::AccountId}:root
+          Action: kms:*
+          Resource: '*'
+        - Sid: AllowBackupService
+          Effect: Allow
+          Principal:
+            Service: backup.amazonaws.com
+          Action:
+            - kms:Decrypt
+            - kms:GenerateDataKey
+            - kms:DescribeKey
+          Resource: '*'
 
-```hcl
-resource "aws_backup_vault" "main" {
-  name        = "FCAJ-Backup-Vault"
-  kms_key_arn = aws_kms_key.backup.arn
-
-  tags = {
-    Environment = var.environment
-    Project     = "FCAJ"
-  }
-}
-
-resource "aws_backup_vault" "dr" {
-  name        = "FCAJ-Backup-Vault-Dr"
-  kms_key_arn = aws_kms_key.backup_dr.arn
-
-  tags = {
-    Environment = var.environment
-    Project     = "FCAJ"
-  }
-}
+BackupKmsKeyAlias:
+  Type: AWS::KMS::Alias
+  Properties:
+    AliasName: alias/gameapi-aurora-backup
+    TargetKeyId: !Ref BackupKmsKey
 ```
 
-##### Khai báo Backup Plan
+Key có alias `alias/gameapi-aurora-backup` để dễ dàng tham chiếu sau này.
 
-```hcl
-resource "aws_backup_plan" "main" {
-  name = "FCAJ-Backup-Plan"
+##### Backup Vault
 
-  rule {
-    rule_name         = "DailyBackup"
-    target_vault_name = aws_backup_vault.main.name
-    schedule          = "cron(0 6 ? * * *)"
-
-    start_window     = 60
-    completion_window = 480
-
-    lifecycle {
-      delete_after       = 35
-      move_to_cold_storage_after = 7
-    }
-
-    copy_action {
-      destination_vault_arn = aws_backup_vault.dr.arn
-      lifecycle {
-        delete_after       = 90
-        move_to_cold_storage_after = 30
-      }
-    }
-  }
-
-  rule {
-    rule_name         = "WeeklyBackup"
-    target_vault_name = aws_backup_vault.main.name
-    schedule          = "cron(0 8 ? * SUN *)"
-
-    start_window     = 60
-    completion_window = 720
-
-    lifecycle {
-      delete_after       = 90
-      move_to_cold_storage_after = 30
-    }
-  }
-}
+```yaml
+BackupVault:
+  Type: AWS::Backup::BackupVault
+  Properties:
+    BackupVaultName: gameapi-aurora-vault
+    EncryptionKeyArn: !GetAtt BackupKmsKey.Arn
+    Notifications:
+      BackupVaultEvents:
+        - BACKUP_JOB_COMPLETED
+        - BACKUP_JOB_FAILED
+        - RESTORE_JOB_COMPLETED
+        - RESTORE_JOB_FAILED
+      SNSTopicArn: !Ref BackupSnsTopic
 ```
 
-##### Gán tài nguyên vào Backup Plan
+Vault được cấu hình gửi thông báo ra SNS Topic cho 4 loại sự kiện: backup completed, backup failed, restore completed, restore failed.
 
-```hcl
-resource "aws_backup_selection" "aurora" {
-  plan_id      = aws_backup_plan.main.id
-  name         = "Aurora-Backup"
-  resources    = [aws_rds_cluster.main.arn]
-  iam_role_arn = aws_iam_role.backup.arn
-}
+#### 5.9.4 Tạo Backup Plan & Selection
 
-resource "aws_backup_selection" "dynamodb" {
-  plan_id      = aws_backup_plan.main.id
-  name         = "DynamoDB-Backup"
-  resources    = [aws_dynamodb_table.leaderboard.arn, aws_dynamodb_table.sessions.arn]
-  iam_role_arn = aws_iam_role.backup.arn
-}
+##### IAM Role
 
-resource "aws_backup_selection" "efs" {
-  plan_id      = aws_backup_plan.main.id
-  name         = "EFS-Backup"
-  resources    = [aws_efs_file_system.main.arn]
-  iam_role_arn = aws_iam_role.backup.arn
-}
+AWS Backup cần một IAM Role để có quyền snapshot RDS:
 
-resource "aws_backup_selection" "s3" {
-  plan_id      = aws_backup_plan.main.id
-  name         = "S3-Backup"
-  resources    = [aws_s3_bucket.backups.arn]
-  iam_role_arn = aws_iam_role.backup.arn
-}
+```yaml
+BackupRole:
+  Type: AWS::IAM::Role
+  Properties:
+    RoleName: gameapi-aws-backup-role
+    AssumeRolePolicyDocument:
+      Statement:
+        - Effect: Allow
+          Principal:
+            Service: backup.amazonaws.com
+          Action: sts:AssumeRole
+    ManagedPolicyArns:
+      - arn:aws:iam::aws:policy/service-role/AWSBackupServiceRolePolicyForBackup
 ```
 
-##### IAM Role cho AWS Backup
+Policy `AWSBackupServiceRolePolicyForBackup` là AWS managed policy, cấp quyền backup cho RDS, DynamoDB, EFS, Storage Gateway,...
 
-```hcl
-resource "aws_iam_role" "backup" {
-  name = "FCAJ-Backup-Role"
+##### Backup Plan với 2 Rules
 
-  assume_role_policy = jsonencode({
-    Version = "2012-10-17"
-    Statement = [
-      {
-        Effect = "Allow"
-        Principal = {
-          Service = "backup.amazonaws.com"
-        }
-        Action = "sts:AssumeRole"
-      }
-    ]
-  })
-}
-
-resource "aws_iam_role_policy_attachment" "backup" {
-  role       = aws_iam_role.backup.name
-  policy_arn = "arn:aws:iam::aws:policy/service-role/AWSBackupServiceRolePolicyForBackup"
-}
+```yaml
+BackupPlan:
+  Type: AWS::Backup::BackupPlan
+  Properties:
+    BackupPlan:
+      BackupPlanName: gameapi-aurora-backup-plan
+      BackupPlanRule:
+        - RuleName: Daily
+          TargetBackupVault: !Ref BackupVault
+          ScheduleExpression: cron(0 5 * * ? *)
+          StartWindowMinutes: 60
+          CompletionWindowMinutes: 120
+          Lifecycle:
+            DeleteAfterDays: 14
+        - RuleName: Weekly
+          TargetBackupVault: !Ref BackupVault
+          ScheduleExpression: cron(0 5 ? * SUN *)
+          StartWindowMinutes: 60
+          CompletionWindowMinutes: 180
+          Lifecycle:
+            DeleteAfterDays: 56
 ```
 
-#### 5.9.5 Restore dữ liệu
+`StartWindowMinutes`: thời gian AWS Backup được phép trì hoãn job (nếu tài nguyên đang bận).
+`CompletionWindowMinutes`: thời gian tối đa để job hoàn thành.
 
-##### Restore Aurora từ Backup
+##### Resource Assignment
+
+```yaml
+BackupSelection:
+  Type: AWS::Backup::BackupSelection
+  Properties:
+    BackupPlanId: !Ref BackupPlan
+    BackupSelection:
+      SelectionName: aurora-cluster-quan
+      IamRoleArn: !GetAtt BackupRole.Arn
+      Resources:
+        - arn:aws:rds:ap-southeast-1:369837025779:cluster:quan
+```
+
+Assigned resource là Aurora cluster `quan` (ARN đầy đủ). Có thể mở rộng bằng cách dùng tag-based selection thay vì hardcode ARN:
+
+```yaml
+Resources: []
+ResourcesTags:
+  - Key: backup
+    Value: true
+```
+
+#### 5.9.5 Monitoring & Alerting
+
+##### SNS Topic
+
+```yaml
+BackupSnsTopic:
+  Type: AWS::SNS::Topic
+  Properties:
+    TopicName: gameapi-backup-notifications
+    DisplayName: GameAPI Backup Notifications
+```
+
+SNS Topic nhận event từ Backup Vault và CloudWatch Alarms.
+
+##### CloudWatch Alarms
+
+```yaml
+BackupFailedAlarm:
+  Type: AWS::CloudWatch::Alarm
+  Properties:
+    AlarmName: gameapi-backup-job-failed
+    Namespace: AWS/Backup
+    MetricName: NumberOfBackupJobsFailed
+    Statistic: Sum
+    Period: 86400
+    EvaluationPeriods: 1
+    Threshold: 0
+    ComparisonOperator: GreaterThanThreshold
+    TreatMissingData: notBreaching
+    AlarmActions:
+      - !Ref BackupSnsTopic
+    Dimensions:
+      - Name: BackupVaultName
+        Value: gameapi-aurora-vault
+
+RestoreFailedAlarm:
+  Type: AWS::CloudWatch::Alarm
+  Properties:
+    AlarmName: gameapi-restore-job-failed
+    Namespace: AWS/Backup
+    MetricName: NumberOfRestoreJobsFailed
+    Statistic: Sum
+    Period: 86400
+    EvaluationPeriods: 1
+    Threshold: 0
+    ComparisonOperator: GreaterThanThreshold
+    TreatMissingData: notBreaching
+    AlarmActions:
+      - !Ref BackupSnsTopic
+```
+
+Hai alarm này kiểm tra mỗi 24 giờ (86400s), nếu có bất kỳ backup hoặc restore job nào failed → chuyển sang `ALARM` và gửi thông báo qua SNS.
+
+#### 5.9.6 Deploy
+
+##### Deploy Stack
 
 ```bash
-aws backup start-restore-job \
-  --recovery-point-arn arn:aws:backup:ap-southeast-1:xxx:recovery-point:xxx \
-  --metadata '{
-    "DBClusterIdentifier": "fcaj-restored",
-    "Engine": "aurora-postgresql",
-    "VpcSecurityGroupIds": "sg-xxx",
-    "DBSubnetGroupName": "fcaj-subnet-group"
-  }' \
-  --iam-role-arn arn:aws:iam::xxx:role/FCAJ-Backup-Role
+cd services/aws-backup-infrastructure
+npx serverless deploy --stage dev
 ```
 
-##### Restore DynamoDB từ Backup
+##### Subscribe SNS
 
-```bash
-aws backup start-restore-job \
-  --recovery-point-arn arn:aws:backup:ap-southeast-1:xxx:recovery-point:xxx \
-  --metadata '{
-    "tableName": "fcaj-restored"
-  }' \
-  --iam-role-arn arn:aws:iam::xxx:role/FCAJ-Backup-Role
-```
+Sau deploy, vào **AWS Console → SNS → Topics → `gameapi-backup-notifications` → Create subscription**: Xác nhận subscription qua email trước khi nhận thông báo
 
-#### 5.9.6 Monitoring & Alerting
+![1783878556553](image/_index.vi/1783878556553.png)
 
-##### CloudWatch Metrics cho AWS Backup
-
-| Metric | Mô tả |
-|---|---|
-| `NumberOfBackupJobsCompleted` | Số job backup thành công |
-| `NumberOfBackupJobsFailed` | Số job backup thất bại |
-| `NumberOfRestoreJobsCompleted` | Số job restore thành công |
-| `NumberOfRestoreJobsFailed` | Số job restore thất bại |
-| `BackupJobDuration` | Thời gian thực hiện backup |
-
-##### CloudWatch Alarm
-
-```hcl
-resource "aws_cloudwatch_metric_alarm" "backup_failure" {
-  alarm_name          = "FCAJ-Backup-Failure"
-  comparison_operator = "GreaterThanThreshold"
-  evaluation_periods  = 1
-  metric_name         = "NumberOfBackupJobsFailed"
-  namespace           = "AWS/Backup"
-  period              = 3600
-  statistic           = "Sum"
-  threshold           = 0
-  alarm_description   = "Cảnh báo khi có backup job thất bại"
-  alarm_actions       = [aws_sns_topic.alarm.arn]
-}
-```
+<div align="center"><i>Hình 5.9.2: Xác nhận email nhận thông báo khi backup lỗi.</i></div>
 
 #### 5.9.7 Kiểm thử
 
-##### Kiểm tra Backup Job
+##### * Kiểm tra Backup Vault
 
-```json
-{
-  "BackupJobId": "xxx",
-  "BackupVaultName": "FCAJ-Backup-Vault",
-  "ResourceArn": "arn:aws:rds:ap-southeast-1:xxx:cluster:fcaj-db",
-  "State": "COMPLETED",
-  "PercentDone": "100.0",
-  "BackupSizeInBytes": 1073741824,
-  "ExpectedCompletionDate": "2026-07-12T07:00:00Z",
-  "CompletionDate": "2026-07-12T06:45:30Z"
-}
-```
+![1783881327889](image/_index.vi/1783881327889.png)
 
-##### Kiểm tra Restore Job
+<div align="center"><i>Hình 5.9.3: Backup Vault được tạo thành công.</i></div>
 
-```json
-{
-  "RestoreJobId": "xxx",
-  "RecoveryPointArn": "arn:aws:backup:ap-southeast-1:xxx:recovery-point:xxx",
-  "ResourceType": "Aurora",
-  "State": "COMPLETED",
-  "PercentDone": "100.0",
-  "CompletionDate": "2026-07-12T08:00:00Z"
-}
-```
+##### * Kiểm tra Backup Plan
 
-##### Các bước kiểm tra
+![1783881416470](image/_index.vi/1783881416470.png)
 
-1. **Kiểm tra Backup tự động** — Đợi theo schedule hoặc kích hoạt thủ công qua AWS Console
-2. **Kiểm tra Backup thành công** — Vào AWS Backup Console > Jobs > kiểm tra trạng thái COMPLETED
-3. **Kiểm tra Restore** — Thực hiện restore vào môi trường staging, kiểm tra tính toàn vẹn dữ liệu
-4. **Kiểm tra CloudWatch Alarm** — Mô phỏng backup failure để kiểm tra alarm hoạt động
+<div align="center"><i>Hình 5.9.4: Backup Plan được tạo thành công.</i></div>
+
+- **Rules**: Daily (14 days) + Weekly (56 days)
+- **Resource assignments**: Aurora cluster `quan`
+
+##### * Chạy Backup thủ công
+
+![1783882216846](image/_index.vi/1783882216846.png)
+
+<div align="center"><i>Hình 5.9.5: Cấu hình chạy backup thủ công.</i></div>
+
+![1783882807221](image/_index.vi/1783882807221.png)
+
+<div align="center"><i>Hình 5.9.6: Chạy backup thành công.</i></div>
+
+- **Resource**: `qua`
+- **Backup size**: dung lượng snapshot
+- **Creation time**: thời gian tạo
+- **Expiration date:** thời gian kết thúc backup
+
+##### * Kiểm tra Restore
+
+* Vào AWS Console → **AWS Backup** → **Backup vaults** → `gameapi-aurora-vault` → Recovery points
+* Chọn recovery point → Click **Restore**
+
+![1783883225535](image/_index.vi/1783883225535.png)
+
+<div align="center"><i>Hình 5.9.7: Cấu hình Aurora cluster mới.</i></div>
+
+* Nhấn **Restore backup** — job restore sẽ tạo một Aurora cluster mới từ snapshot.
+
+![1783884298411](image/_index.vi/1783884298411.png)
+
+<div align="center"><i>Hình 5.9.8: Cluster mới xuất hiện.</i></div>
+
+* Sau khi xác nhận thành công, nhớ xóa cluster test để tránh phát sinh chi phí.
+
+##### * Kiểm tra Monitoring & Notification
+
+![1783883682928](image/_index.vi/1783883682928.png)
+
+<div align="center"><i>Hình 5.9.9: CloudWatch Alarms ở trạng thái OK.</i></div>
+
+**SNS Email** nhận thông báo khi Backup hoặc Restore hoàn thành
