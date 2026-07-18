@@ -1,57 +1,31 @@
----
-title: "Week 8 Worklog"
-date: 2024-01-01
+﻿---
+title: "Worklog Week 8"
+date: 2026-06-22
 weight: 8
 chapter: false
 pre: " <b> 1.8. </b> "
 ---
-{{% notice warning %}} 
-⚠️ **Note:** The following information is for reference purposes only. Please **do not copy verbatim** for your own report, including this warning.
-{{% /notice %}}
-
 
 ### Week 8 Objectives:
 
-* Connect and get acquainted with members of First Cloud AI Journey.
-* Understand basic AWS services, how to use the console & CLI.
+* Learn database maintenance tasks for relational databases (PostgreSQL/Aurora) using `VACUUM` and `ANALYZE`.
+* Master techniques for intervening in API Gateway using Stage Variables to flexibly open/close communication channels.
+* Identify and design an automated system maintenance flow as a special project feature.
+* Finalize and compare the complete system architecture.
+* Review the architecture and create a detailed deployment plan with task assignments for each team.
 
-### Tasks to be carried out this week:
-| Day | Task                                                                                                                                                                                                   | Start Date | Completion Date | Reference Material                        |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------- | --------------- | ----------------------------------------- |
-| 2   | - Get acquainted with FCAJ members <br> - Read and take note of internship unit rules and regulations                                                                                                   | 08/11/2025 | 08/11/2025      |
-| 3   | - Learn about AWS and its types of services <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                              | 08/12/2025 | 08/12/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Create AWS Free Tier account <br> - Learn about AWS Console & AWS CLI <br> - **Practice:** <br>&emsp; + Create AWS account <br>&emsp; + Install & configure AWS CLI <br> &emsp; + How to use AWS CLI | 08/13/2025 | 08/13/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Learn basic EC2: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - SSH connection methods to EC2 <br> - Learn about Elastic IP   <br>                            | 08/14/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Practice:** <br>&emsp; + Launch an EC2 instance <br>&emsp; + Connect via SSH <br>&emsp; + Attach an EBS volume                                                                                     | 08/15/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
+### Tasks to be completed this week:
 
+| Day | Task | Start Date | End Date | Documentation |
+| ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------- | ------------------ | ----------------- |
+| Mon | - Learn DB maintenance: <br>+ `VACUUM`: clean dead tuples. <br>+ `ANALYZE`: update statistics for the query planner. <br> - Learn API Gateway: use SDK to update `stageVariables`, route traffic to a maintenance page, or return 503 when needed. | 22/06/2026 | 22/06/2026 | |
+| Tue | - Complete, agree on, and review the architecture. <br> - Plan: split the system into small modules, assign implementation tasks, and delegate responsibilities to team members. | 23/06/2026 | 23/06/2026 | |
+| Wed - Sun | - Implement and document step-by-step for: <br>+ Infrastructure: IAM Roles, policies, worst-case cost calculations, and AWS Budget limits. <br>+ Edge layer: deploy CloudFront and WAF with CloudFormation in the US region. <br>+ Database: deploy Aurora SQL and AWS Backup with S3 using CloudFormation. | 24/06/2026 | 28/06/2026 | |
 
-### Week 8 Achievements:
+### Week 8 Results:
 
-* Understood what AWS is and mastered the basic service groups: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
-
-* Successfully created and configured an AWS Free Tier account.
-
-* Became familiar with the AWS Management Console and learned how to find, access, and use services via the web interface.
-
-* Installed and configured AWS CLI on the computer, including:
-  * Access Key
-  * Secret Key
-  * Default Region
-  * ...
-
-* Used AWS CLI to perform basic operations such as:
-
-  * Check account & configuration information
-  * Retrieve the list of regions
-  * View EC2 service
-  * Create and manage key pairs
-  * Check information about running services
-  * ...
-
-* Acquired the ability to connect between the web interface and CLI to manage AWS resources in parallel.
-* ...
+* Mastered relational database maintenance for Aurora/PostgreSQL using `VACUUM` and `ANALYZE`.
+* Learned how to use SDK to manage API Gateway and dynamically update `stageVariables` to route traffic to maintenance mode or protect the system.
+* Finalized and reviewed the overall system architecture, ensuring component integration.
+* Successfully created a detailed deployment plan: decomposed the system into modules, assigned teams, and clarified responsibilities for each member.
+* Successfully implemented and documented core infrastructure and guidance for: <br> - Base infrastructure: IAM Roles, security policies, cost-risk calculations, and AWS Budget alerts. <br> - Edge layer: CloudFront and WAF deployment with CloudFormation in the US region. <br> - Database and storage: Aurora SQL deployment and automated backup to Amazon S3 using AWS Backup and CloudFormation. | 24/06/2026 | 28/06/2026 | |

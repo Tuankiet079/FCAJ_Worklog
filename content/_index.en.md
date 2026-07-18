@@ -25,7 +25,7 @@ chapter: false
 
 &emsp; **Internship Period:** From May 4, 2026 to July 30, 2026
 
-![Avatar](/images/avatar.png)
+![Bui Binh Nguyen](avatar.png)
 
 ### Report Contents
 

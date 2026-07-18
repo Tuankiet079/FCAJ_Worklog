@@ -30,7 +30,7 @@ Dữ liệu game — tài khoản, tiền tệ, inventory, save data — là tà
 
 ### 2.3 Kiến trúc giải pháp
 
-![1783961736805](image/_index.vi/1783961736805.png)
+![1783961736805](image/diagram.png)
 
 **Tổng quan luồng xử lý:**
 
