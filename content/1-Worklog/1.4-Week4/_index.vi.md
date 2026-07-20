@@ -1,6 +1,6 @@
 ---
 title: "Worklog Tuần 4"
-date: 2026-06-25
+date: 2026-05-25
 weight: 4
 chapter: false
 pre: " <b> 1.4. </b> "
@@ -15,10 +15,10 @@ pre: " <b> 1.4. </b> "
 
 | Thứ | Công việc                                                                                                                                                                                | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu |
 | ---- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------- | ------------------ | ----------------- |
-| 2    | - Tìm hiểu kiến trúc Serverless trên AWS:<br />+ Khái niệm Serverless.<br />+ Ưu/nhược điểm so với máy chủ truyền thống.<br />+ Khám phá AWS Lambda.                | 25/06/2026       | 25/06/2026         |                   |
-| 3    | - Tìm hiểu các Database hỗ trợ Serverless:<br />+ Amazon DynamoDB.<br />+ Amazon Aurora Serverless.<br />+ Use cases cho từng loại DB.                                          | 26/06/2026       | 26/06/2026         |                   |
-| 4    | - Khởi tạo Amazon Aurora.<br />- Thử đóng gói toàn bộ dự án thành một lambda.                                                                                                  | 27/06/2026       | 27/06/2026         |                   |
-| 5    | - Tìm hiểu lớp biên mạng:<br />+ Amazon API Gateway.<br />+ Amazon CloudFront.<br />+ AWS WAF.<br />- Sử dụng CloudFormation để khởi tạo lớp biên mạng cho lambda đã làm. | 28/06/2026       | 28/06/2026         |                   |
+| 2    | - Tìm hiểu kiến trúc Serverless trên AWS:<br />+ Khái niệm Serverless.<br />+ Ưu/nhược điểm so với máy chủ truyền thống.<br />+ Khám phá AWS Lambda.                | 25/05/2026       | 25/05/2026         |                   |
+| 3    | - Tìm hiểu các Database hỗ trợ Serverless:<br />+ Amazon DynamoDB.<br />+ Amazon Aurora Serverless.<br />+ Use cases cho từng loại DB.                                          | 26/05/2026       | 26/05/2026         |                   |
+| 4    | - Khởi tạo Amazon Aurora.<br />- Thử đóng gói toàn bộ dự án thành một lambda.                                                                                                  | 27/05/2026       | 27/05/2026         |                   |
+| 5    | - Tìm hiểu lớp biên mạng:<br />+ Amazon API Gateway.<br />+ Amazon CloudFront.<br />+ AWS WAF.<br />- Sử dụng CloudFormation để khởi tạo lớp biên mạng cho lambda đã làm. | 28/05/2026       | 28/05/2026         |                   |
 
 ### Kết quả đạt được tuần 4:
 
