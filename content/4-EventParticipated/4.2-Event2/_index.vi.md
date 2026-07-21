@@ -125,16 +125,16 @@ Tham gia chuỗi chia sẻ tại **FCAJ Community Day** mang lại cho tôi nh�
 <div align="center" style="width: 100%; margin: 0 auto; padding: 10px;">
   <div style="display: flex; flex-wrap: nowrap; justify-content: center; gap: 6px; line-height: 0; margin-bottom: 6px;">
     <!-- HÀNG 1: 3 hình -->
-    <img src="images/4-Event/Event2/event2(1).jpg" style="width: 33.33%; display: block; object-fit: cover; aspect-ratio: 4/3; margin: 0;" />
-    <img src="images/4-Event/Event2/event2(2).jpg" style="width: 33.33%; display: block; object-fit: cover; aspect-ratio: 4/3; margin: 0;" />
-    <img src="images/4-Event/Event2/event2(3).jpg" style="width: 33.33%; display: block; object-fit: cover; aspect-ratio: 4/3; margin: 0;" />
+    <img src="../../../images/4-Event/Event2/event2(1).jpg" style="width: 33.33%; display: block; object-fit: cover; aspect-ratio: 4/3; margin: 0;" />
+    <img src="../../../images/4-Event/Event2/event2(2).jpg" style="width: 33.33%; display: block; object-fit: cover; aspect-ratio: 4/3; margin: 0;" />
+    <img src="../../../images/4-Event/Event2/event2(3).jpg" style="width: 33.33%; display: block; object-fit: cover; aspect-ratio: 4/3; margin: 0;" />
   </div>
   
   <div style="display: flex; flex-wrap: nowrap; justify-content: center; gap: 6px; line-height: 0;">
     <!-- HÀNG 2: 3 hình -->
-    <img src="images/4-Event/Event2/event2(4).jpg" style="width: 33.33%; display: block; object-fit: cover; aspect-ratio: 4/3; margin: 0;" />
-    <img src="images/4-Event/Event2/event2(5).jpg" style="width: 33.33%; display: block; object-fit: cover; aspect-ratio: 4/3; margin: 0;" />
-    <img src="images/4-Event/Event2/event2(6).jpg" style="width: 33.33%; display: block; object-fit: cover; aspect-ratio: 4/3; margin: 0;" />
+    <img src="../../../images/4-Event/Event2/event2(4).jpg" style="width: 33.33%; display: block; object-fit: cover; aspect-ratio: 4/3; margin: 0;" />
+    <img src="../../../images/4-Event/Event2/event2(5).jpg" style="width: 33.33%; display: block; object-fit: cover; aspect-ratio: 4/3; margin: 0;" />
+    <img src="../../../images/4-Event/Event2/event2(6).jpg" style="width: 33.33%; display: block; object-fit: cover; aspect-ratio: 4/3; margin: 0;" />
   </div>
   
   <p style="margin-top: 20px; margin-bottom: 0;"><i>Ảnh chụp các bài thuyết trình tại FCAJ Community Day</i></p>

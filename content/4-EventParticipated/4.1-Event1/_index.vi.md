@@ -100,13 +100,13 @@ Tham gia buổi **FCAJ Knowledge-Sharing Session** tuần này mang lại cho t�
 
 <div align="center" style="max-width: 1000px; margin: 0 auto; padding: 10px;">
   <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; line-height: 0;">  
-    <img src="images/4-Event/Event1/event1(1).jpg" 
+    <img src="../../../images/4-Event/Event1/event1(1).jpg" 
          style="width: calc(50% - 3px); max-width: 450px; display: block; object-fit: cover; aspect-ratio: 4/3; margin: 0;" />
-    <img src="images/4-Event/Event1/event1(2).jpg" 
+    <img src="../../../images/4-Event/Event1/event1(2).jpg" 
          style="width: calc(50% - 3px); max-width: 450px; display: block; object-fit: cover; aspect-ratio: 4/3; margin: 0;" />
-    <img src="images/4-Event/Event1/event1(3).jpg" 
+    <img src="../../../images/4-Event/Event1/event1(3).jpg" 
          style="width: calc(50% - 3px); max-width: 450px; display: block; object-fit: cover; aspect-ratio: 4/3; margin: 0;" />    
-    <img src="images/4-Event/Event1/event1(4).jpg" 
+    <img src="../../../images/4-Event/Event1/event1(4).jpg" 
          style="width: calc(50% - 3px); max-width: 450px; display: block; object-fit: cover; aspect-ratio: 4/3; margin: 0;" />
   </div>
   <p style="margin-top: 20px; margin-bottom: 0;"><i>Ảnh chụp lưu niệm tại FCAJ Community Day</i></p>
