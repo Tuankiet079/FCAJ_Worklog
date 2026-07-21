@@ -7,9 +7,9 @@ pre: " <b> 3.1. </b> "
 ---
 ### Xây dựng hệ thống AI đa người dùng an toàn hơn với Amazon Bedrock
 
-![Kiến trúc hệ thống đa người dùng với Amazon Bedrock](images/bedrock-architecture_1.jpg)
+![Kiến trúc hệ thống đa người dùng với Amazon Bedrock](/images/bedrock-architecture_1.jpg)
 
-![Kiến trúc hệ thống đa người dùng với Amazon Bedrock](images/bedrock-architecture_2.jpg)
+![Kiến trúc hệ thống đa người dùng với Amazon Bedrock](/images/bedrock-architecture_2.jpg)
 
 Chào mọi người, hôm nay mình muốn chia sẻ một bài viết khá hay của AWS về cách PAR Technology xây dựng hệ thống AI sử dụng Amazon Bedrock nhưng vẫn đảm bảo mỗi người dùng chỉ được xem đúng dữ liệu mà mình có quyền truy cập.
 

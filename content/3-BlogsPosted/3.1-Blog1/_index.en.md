@@ -7,9 +7,9 @@ pre: " <b> 3.1. </b> "
 ---
 ### Building a safer multi-tenant AI system with Amazon Bedrock
 
-![Multi-tenant system architecture with Amazon Bedrock](images/bedrock-architecture_1.jpg)
+![Multi-tenant system architecture with Amazon Bedrock](/images/bedrock-architecture_1.jpg)
 
-![Multi-tenant system architecture with Amazon Bedrock](images/bedrock-architecture_2.jpg)
+![Multi-tenant system architecture with Amazon Bedrock](/images/bedrock-architecture_2.jpg)
 
 Hello everyone, today I want to share a great article by AWS on how PAR Technology built an AI system using Amazon Bedrock while ensuring that each user can only see the exact data they are authorized to access.
 

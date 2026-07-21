@@ -7,7 +7,7 @@ pre: " <b> 3.3. </b> "
 ---
 ### Sử dụng Amazon CloudFront để tăng tốc và tối ưu quá trình xử lý yêu cầu của người dùng
 
-![CDN CloudFront](images/cloudfront-cdn.jpg)
+![CDN CloudFront](/images/cloudfront-cdn.jpg)
 
 Chào anh chị và các bạn, trong quá trình tìm hiểu về kiến trúc serverless trên AWS, mình có cơ hội tìm hiểu về **Amazon CloudFront** – dịch vụ CDN (Content Delivery Network) giúp tăng tốc độ truy cập và cải thiện trải nghiệm người dùng khi sử dụng ứng dụng. Sau khi đọc AWS Blog, mình xin chia sẻ một số kiến thức mà mình học được.
 

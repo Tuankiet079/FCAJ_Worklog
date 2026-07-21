@@ -33,5 +33,5 @@ Automation & Maintenance Layer:
      * Hạ tầng API: Gọi các hàm `start_maintenance` và `stop_maintenance` để cập nhật trạng thái hệ thống `stageVariables` của API Gateway thông qua AWS SDK.
      * Bảo trì CSDL: Định kỳ kích hoạt hàm `vacuum & analyze` để tối ưu hóa hiệu năng DB và hàm `reset_daily` để làm mới tiến trình thế giới hàng ngày.
 
-![overview](images/diagram.png)
+![overview](/images/diagram.png)
 <div align="center"><i>Hình 5.1.1: Sơ đồ kiến trúc tổng thể.</i></div>

@@ -13,7 +13,7 @@ Trong sơ đồ kiến trúc hệ thống, các hàm AWS Lambda được phân t
 
 ##### Tạo IAM Policy (Chính sách cấp quyền truy cập Database).
 
-![IAM_RDS](images/IAM_RDS_1.png)
+![IAM_RDS](/images/IAM_RDS_1.png)
 
 <div align="center"><i>Hình 5.2.1: Tạo policy tự cấu hình bằng JSON.</i></div>
 
@@ -44,19 +44,19 @@ database-user-name là tên database.
 
 Tạm thời cứ để cluster-id và database-user-name ở đó.
 
-![IAM_RDS](images/IAM_RDS_2.png)
+![IAM_RDS](/images/IAM_RDS_2.png)
 
 <div align="center"><i>Hình 5.2.2: Đặt tên và xác nhận policy.</i></div>
 
 ##### Tạo IAM Role cho Backend.
 
-![IAM_RDS](images/IAM_RDS_3.png)
+![IAM_RDS](/images/IAM_RDS_3.png)
 
 <div align="center"><i>Hình 5.2.3: Chọn dịch vụ được cấp phép truy cập database.</i></div>
 
 Vì database được xử lý thông qua các hàm Lambda nên ta chọn Service Use Case Lambda.
 
-![IAM_RDS](images/IAM_RDS_4.png)
+![IAM_RDS](/images/IAM_RDS_4.png)
 
 <div align="center"><i>Hình 5.2.4: Thêm policy cho Role này.</i></div>
 
@@ -65,7 +65,7 @@ Tìm và tích chọn 2 policy dưới đây:
 * Backend-Aurora-Connect-Policy: policy vừa tạo để cấp phép truy cập database.
 * AWSLambdaBasicExecutionRole: policy này cấp phép ghi log ra CloudWatch.
 
-![IAM_RDS](images/IAM_RDS_5.png)
+![IAM_RDS](/images/IAM_RDS_5.png)
 
 <div align="center"><i>Hình 5.2.5: Đặt tên và xác nhận role.</i></div>
 
@@ -99,11 +99,11 @@ lambda-function-name: tên function lambda phụ trách việc bảo trì databa
 
 Tạm thời cứ để lambda-function-name ở đó.
 
-![IAM_Maintenance](images/IAM_Maintenance_1.png)
+![IAM_Maintenance](/images/IAM_Maintenance_1.png)
 
 <div align="center"><i>Hình 5.2.6: Đặt tên và xác nhận policy.</i></div>
 
-![IAM_Maintenance](images/IAM_Maintenance_2.png)
+![IAM_Maintenance](/images/IAM_Maintenance_2.png)
 
 <div align="center"><i>Hình 5.2.7: Đặt tên và xác nhận role.</i></div>
 
@@ -133,11 +133,11 @@ api-id: ID của API Gateway.
 
 Tạm thời cứ để api-id ở đó.
 
-![IAM_API_Traffic](images/IAM_API_Traffic_1.png)
+![IAM_API_Traffic](/images/IAM_API_Traffic_1.png)
 
 <div align="center"><i>Hình 5.2.8: Đặt tên và xác nhận policy.</i></div>
 
-![IAM_API_Traffic](images/IAM_API_Traffic_2.png)
+![IAM_API_Traffic](/images/IAM_API_Traffic_2.png)
 
 <div align="center"><i>Hình 5.2.9: Đặt tên và xác nhận role.</i></div>
 
@@ -175,7 +175,7 @@ Giả định Lượng tải và Thông số Hệ thống
 | Data Transfer                          |        0.00        |       0.00       |
 | **Total**                        | **$117.07** |  **$1,404.78**  |
 
-![Cost_Calculator](images/Cost_Calculator_1.png)
+![Cost_Calculator](/images/Cost_Calculator_1.png)
 
 <div align="center"><i>Hình 5.2.10: Biểu đồ tỉ lệ chi phí dịch vụ.</i></div>
 
@@ -183,53 +183,53 @@ Giả định Lượng tải và Thông số Hệ thống
 
 ##### Budget 1: Tính toán tổng chi phí vận hành của toàn bộ hệ thống.
 
-![Budget](images/Budget_1.png)
+![Budget](/images/Budget_1.png)
 
 <div align="center"><i>Hình 5.2.11: Thiết lập cấu hình Cost Budget.</i></div>
 
-![Budget](images/Budget_2.png)
+![Budget](/images/Budget_2.png)
 
 <div align="center"><i>Hình 5.2.12: Thiết lập thông số Cost Budget.</i></div>
 
 Hạn mức 140 USD cố định hàng tháng.
 
-![Budget](images/Budget_3.png)
+![Budget](/images/Budget_3.png)
 
 <div align="center"><i>Hình 5.2.13: Thiết lập cảnh cáo sớm (dự báo).</i></div>
 
-![Budget](images/Budget_4.png)
+![Budget](/images/Budget_4.png)
 
 <div align="center"><i>Hình 5.2.14: Thiết lập cảnh cáo thực tế (gần chạm trần).</i></div>
 
-![Budget](images/Budget_5.png)
+![Budget](/images/Budget_5.png)
 
 <div align="center"><i>Hình 5.2.15: Thiết lập cảnh cáo khẩn cấp (vượt trần).</i></div>
 
-![Budget](images/Budget_6.png)
+![Budget](/images/Budget_6.png)
 
 <div align="center"><i>Hình 5.2.16: Xác nhận và hoàn tất tạo Cost Budget.</i></div>
 
 ##### Budget 2: Giám sát Aurora DB.
 
-![Budget](images/Budget_7.png)
+![Budget](/images/Budget_7.png)
 
 <div align="center"><i>Hình 5.2.17: Thiết lập cấu hình Usage Budget.</i></div>
 
-![Budget](images/Budget_8.png)
+![Budget](/images/Budget_8.png)
 
 <div align="center"><i>Hình 5.2.18: Thiết lập thông số Usage Budget.</i></div>
 
 Hệ thống 2 ACU chạy 24/7, 1 tháng cần khoảng 1460 ACU-Hrs.
 
-![Budget](images/Budget_9.png)
+![Budget](/images/Budget_9.png)
 
 <div align="center"><i>Hình 5.2.19: Thiết lập cảnh cáo thực tế.</i></div>
 
-![Budget](images/Budget_10.png)
+![Budget](/images/Budget_10.png)
 
 <div align="center"><i>Hình 5.2.20: Thiết lập cảnh cáo thực tế khẩn cấp.</i></div>
 
-![Budget](images/Budget_11.png)
+![Budget](/images/Budget_11.png)
 
 <div align="center"><i>Hình 5.2.21: Xác nhận và hoàn tất tạo Usage Budget.</i></div>
 
@@ -311,20 +311,20 @@ Outputs:
 
 Lưu ý: Mặc dù hệ thống core ở ap-southeast-1 nhưng chứng chỉ SSL và WAF bảo vệ cho CloudFront lại nằm ở us-east-1 nên lớp biên mạng sẽ nằm ở us-east-1.
 
-![Network_Security_Stack](images/Network_Security_Stack_1.png)
+![Network_Security_Stack](/images/Network_Security_Stack_1.png)
 
 <div align="center"><i>Hình 5.2.22: Tạo CloudFormation Stack và nạp file network-security-stack.yaml vào.</i></div>
 
-![Network_Security_Stack](images/Network_Security_Stack_2.png)
+![Network_Security_Stack](/images/Network_Security_Stack_2.png)
 
 <div align="center"><i>Hình 5.2.23: Đặt tên và truyền endpoint.</i></div>
 
 Hiện tại chưa có tên miền API Gateway để giao tiếp, nên đặt tạm tên miền bất kỳ `aws.amazon.com` để bypass qua bước này, rồi sẽ sửa lại sau khi có domain thật.
 
-![Network_Security_Stack](images/Network_Security_Stack_3.png)
+![Network_Security_Stack](/images/Network_Security_Stack_3.png)
 
 <div align="center"><i>Hình 5.2.24: Xác nhận và Submit.</i></div>
 
-![Network_Security_Stack](images/Network_Security_Stack_4.png)
+![Network_Security_Stack](/images/Network_Security_Stack_4.png)
 
 <div align="center"><i>Hình 5.2.25: Kiểm tra lại thành phần đã tạo.</i></div>

@@ -13,7 +13,7 @@ In the system architecture, AWS Lambda functions are categorized into three grou
 
 ##### Creating an IAM Policy (Database Access Policy).
 
-![IAM_RDS](images/IAM_RDS_1.png)
+![IAM_RDS](/images/IAM_RDS_1.png)
 
 <div align="center"><i>Figure 5.2.1: Configuring the policy via JSON.</i></div>
 
@@ -39,19 +39,19 @@ In the system architecture, AWS Lambda functions are categorized into three grou
 * cluster-id is the ID of the Aurora Cluster.
 * database-user-name is the name of the database.
 
-![IAM_RDS](images/IAM_RDS_2.png)
+![IAM_RDS](/images/IAM_RDS_2.png)
 
 <div align="center"><i>Figure 5.2.2: Naming and confirming the policy.</i></div>
 
 ##### Creating an IAM Role for the Backend.
 
-![IAM_RDS](images/IAM_RDS_3.png)
+![IAM_RDS](/images/IAM_RDS_3.png)
 
 <div align="center"><i>Figure 5.2.3: Selecting the service authorized to access the database.</i></div>
 
 Since the database is processed via Lambda functions, select "Lambda" as the Service Use Case.
 
-![IAM_RDS](images/IAM_RDS_4.png)
+![IAM_RDS](/images/IAM_RDS_4.png)
 
 <div align="center"><i>Figure 5.2.4: Attaching policies to the Role.</i></div>
 
@@ -59,7 +59,7 @@ Find and select the following two policies:
 * Backend-Aurora-Connect-Policy: The custom policy created above.
 * AWSLambdaBasicExecutionRole: Grants permission to write logs to CloudWatch.
 
-![IAM_RDS](images/IAM_RDS_5.png)
+![IAM_RDS](/images/IAM_RDS_5.png)
 
 <div align="center"><i>Figure 5.2.5: Naming and confirming the role.</i></div>
 
@@ -83,11 +83,11 @@ Find and select the following two policies:
 }
 ```
 
-![IAM_Maintenance](images/IAM_Maintenance_1.png)
+![IAM_Maintenance](/images/IAM_Maintenance_1.png)
 
 <div align="center"><i>Figure 5.2.6: Naming and confirming the policy.</i></div>
 
-![IAM_Maintenance](images/IAM_Maintenance_2.png)
+![IAM_Maintenance](/images/IAM_Maintenance_2.png)
 
 <div align="center"><i>Figure 5.2.7: Naming and confirming the role.</i></div>
 
@@ -111,11 +111,11 @@ Find and select the following two policies:
 }
 ```
 
-![IAM_API_Traffic](images/IAM_API_Traffic_1.png)
+![IAM_API_Traffic](/images/IAM_API_Traffic_1.png)
 
 <div align="center"><i>Figure 5.2.8: Naming and confirming the policy.</i></div>
 
-![IAM_API_Traffic](images/IAM_API_Traffic_2.png)
+![IAM_API_Traffic](/images/IAM_API_Traffic_2.png)
 
 <div align="center"><i>Figure 5.2.9: Naming and confirming the role.</i></div>
 
@@ -149,7 +149,7 @@ Assumed Load and System Parameters:
 | Data Transfer                          |        0.00        |       0.00       |
 | **Total**                        | **$117.07** |  **$1,404.78**  |
 
-![Cost_Calculator](images/Cost_Calculator_1.png)
+![Cost_Calculator](/images/Cost_Calculator_1.png)
 
 <div align="center"><i>Figure 5.2.10: Service cost distribution chart.</i></div>
 
@@ -157,12 +157,12 @@ Assumed Load and System Parameters:
 
 ##### Budget 1: Total System Operational Cost.
 
-![Budget](images/Budget_1.png)
+![Budget](/images/Budget_1.png)
 <div align="center"><i>Figure 5.2.11 - 5.2.16: Configuring Cost Budget (140 USD threshold, early warnings, and critical alerts).</i></div>
 
 ##### Budget 2: Aurora DB Monitoring.
 
-![Budget](images/Budget_7.png)
+![Budget](/images/Budget_7.png)
 <div align="center"><i>Figure 5.2.17 - 5.2.21: Configuring Usage Budget for 2 ACU 24/7 runtime.</i></div>
 
 ### 5.2.3 Initializing the Edge Layer.
@@ -241,5 +241,5 @@ Outputs:
 
 Note: While the core system is in ap-southeast-1, the SSL certificate and WAF for CloudFront are managed in us-east-1.
 
-![Network_Security_Stack](images/Network_Security_Stack_1.png)
+![Network_Security_Stack](/images/Network_Security_Stack_1.png)
 <div align="center"><i>Figure 5.2.22 - 5.2.25: Creating the CloudFormation Stack and verifying components.</i></div>

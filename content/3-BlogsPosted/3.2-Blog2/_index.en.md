@@ -7,7 +7,7 @@ pre: " <b> 3.2. </b> "
 ---
 ### Amazon EKS Supports Control Plane Egress Through Your VPC
 
-![EKS data flow through VPC](images/eks-vpc-routing.jpg)
+![EKS data flow through VPC](/images/eks-vpc-routing.jpg)
 
 While learning about Amazon EKS, I noticed that AWS recently introduced the **Customer-Routed Control Plane Egress** feature. This feature allows traffic from the Kubernetes Control Plane to be routed through the customer's Amazon VPC, increasing system control and security.
 

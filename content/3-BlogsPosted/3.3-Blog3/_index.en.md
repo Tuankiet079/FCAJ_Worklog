@@ -7,7 +7,7 @@ pre: " <b> 3.3. </b> "
 ---
 ### Using Amazon CloudFront to accelerate and optimize user request processing
 
-![CloudFront CDN](images/cloudfront-cdn.jpg)
+![CloudFront CDN](/images/cloudfront-cdn.jpg)
 
 Hello everyone, during my research on serverless architecture on AWS, I had the opportunity to learn about **Amazon CloudFront** – a CDN (Content Delivery Network) service that helps accelerate access speed and improve user experience when using applications. After reading the AWS Blog, I would like to share some knowledge I have learned.
 

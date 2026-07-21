@@ -7,7 +7,7 @@ pre: " <b> 3.2. </b> "
 ---
 ### Amazon EKS Hỗ Trợ Truyền Dữ Liệu Từ Mặt Phẳng Điều Khiển Thông Qua VPC Của Bạn
 
-![Luồng dữ liệu EKS qua VPC](images/eks-vpc-routing.jpg)
+![Luồng dữ liệu EKS qua VPC](/images/eks-vpc-routing.jpg)
 
 Trong quá trình tìm hiểu về Amazon EKS, mình thấy AWS vừa giới thiệu tính năng **Customer-Routed Control Plane Egress**. Tính năng này cho phép lưu lượng từ Control Plane của Kubernetes được định tuyến thông qua Amazon VPC của khách hàng, giúp tăng khả năng kiểm soát và bảo mật hệ thống.
 

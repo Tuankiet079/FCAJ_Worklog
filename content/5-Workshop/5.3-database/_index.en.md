@@ -11,11 +11,11 @@ The Database Layer includes: Aurora PostgreSQL database, RDS Proxy for connectio
 
 Return to the ap-southeast-1 region and build the system core here.
 
-![Database_Create](images/Database_Create_1.png)
+![Database_Create](/images/Database_Create_1.png)
 
 <div align="center"><i>Figure 5.3.1: Create database with Aurora engine (PostgreSQL Compatible).</i></div>
 
-![Database_Create](images/Database_Create_2.png)
+![Database_Create](/images/Database_Create_2.png)
 
 <div align="center"><i>Figure 5.3.2: Configure basic database parameters.</i></div>
 
@@ -82,27 +82,27 @@ Outputs:
       Name: Singapore-Backup-S3BucketName
 ```
 
-![Backup_Stack](images/Backup_Stack_1.png)
+![Backup_Stack](/images/Backup_Stack_1.png)
 
 <div align="center"><i>Figure 5.3.3: Create CloudFormation Stack and upload the backup-s3-stack.yaml file.</i></div>
 
-![Backup_Stack](images/Backup_Stack_2.png)
+![Backup_Stack](/images/Backup_Stack_2.png)
 
 <div align="center"><i>Figure 5.3.4: Name the stack and enter the Cluster ARN (instructions in Figure 5.3.5).</i></div>
 
-![Get_Database_Arn](images/Get_Database_Arn.png)
+![Get_Database_Arn](/images/Get_Database_Arn.png)
 
 <div align="center"><i>Figure 5.3.5: Get the Cluster ARN from the Configuration tab.</i></div>
 
-![Backup_Stack](images/Backup_Stack_3.png)
+![Backup_Stack](/images/Backup_Stack_3.png)
 
 <div align="center"><i>Figure 5.3.6: Confirm information and Submit.</i></div>
 
-![Confirm_Backup_Stack](images/Confirm_Backup_Stack.png)
+![Confirm_Backup_Stack](/images/Confirm_Backup_Stack.png)
 
 <div align="center"><i>Figure 5.3.7: Result.</i></div>
 
-![IAM_Policy_Update](images/IAM_Policy_Update.png)
+![IAM_Policy_Update](/images/IAM_Policy_Update.png)
 
 <div align="center"><i>Figure 5.3.8: Update cluster-id and database-user-name in the Backend IAM Policy from section 2.1.</i></div>
 
