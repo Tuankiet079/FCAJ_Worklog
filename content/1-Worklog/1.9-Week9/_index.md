@@ -7,15 +7,16 @@ pre: " <b> 1.9. </b> "
 ---
 
 ### Week 9 Objectives:
+* Finalize assigned infrastructure configuration code and prepare personal technical documentation packages.
+* Hand over resources and implementation guides to the team for overall system integration.
 
-* Hand over completed work and wait for remaining team members to finish their progress.
+### Tasks to be carried out this week:
 
-### Tasks to be completed this week:
+| Day | Task | Start Date | Completion Date | Reference Material |
+| :--- | :--- | :--- | :--- | :--- |
+| **2-3** | - Standardize assigned infrastructure configuration scripts to ensure clean and readable code.<br>- Complete the preliminary Deployment Guide documentation. | 06/29/2026 | 06/30/2026 |  |
+| **4-5** | - Hand over infrastructure codebase and share resource specifications with team members. | 07/01/2026 | 07/02/2026 |  |
+| **6** | - Coordinate to integrate assigned modules with the team's central application logic. | 07/03/2026 | 07/03/2026 |  |
 
-| Day | Task | Start Date | End Date | Documentation |
-| ---- | ------------------------------------------------------------------- | ---------------- | ------------------ | ----------------- |
-| Mon | - Package the code, prepare a brief handover guide, and deliver it to the team. | 29/06/2026 | 29/06/2026 | |
-
-### Week 9 Results:
-
-* Completed the code handover to team members.
+### Week 9 Achievements:
+* Cleanly packaged infrastructure code and successfully completed handover to the team on schedule.

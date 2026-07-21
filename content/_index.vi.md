@@ -7,25 +7,27 @@ chapter: false
 
 # Báo cáo thực tập
 ### Thông tin sinh viên:
-&emsp; **Họ và tên:** Bùi Bình Nguyên
+&emsp; **Họ và tên:** Lưu Tuấn Kiệt
 
-&emsp; **Số điện thoại:** 0344898294
+&emsp; **Số điện thoại:** 0384868794
 
-&emsp; **Email:** hoilamgiaaz@gmail.com
+&emsp; **Email:** luutuankiet794@gmail.com
 
-&emsp; **Trường:** Đại học Công nghệ TP.HCM (HUTECH)
+&emsp; **Trường:** Đại học Công nghệ Thành phố Hồ Chí Minh - HUTECH
 
 &emsp; **Ngành:** Công nghệ thông tin
 
-&emsp; **Lớp:** 22DTHE5
+&emsp; **Lớp:** 22DTHE7
 
 &emsp; **Công ty thực tập:** Công ty TNHH Amazon Web Services Việt Nam
 
 &emsp; **Vị trí thực tập:** Workforce Bootcamp - First Cloud AI Journey
 
-&emsp; **Thời gian thực tập:** Từ ngày 04/05/2026 đến ngày 30/7/2026
+&emsp; **Thời gian thực tập:** Từ ngày 04/05/2026 đến ngày 30/07/2026
 
-![Bùi Bình Nguyên](avatar.png)
+![Lưu Tuấn Kiệt](avatar.jpg)
+
+
 
 ### Nội dung báo cáo
 

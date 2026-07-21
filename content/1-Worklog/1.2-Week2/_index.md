@@ -7,24 +7,20 @@ pre: " <b> 1.2. </b> "
 ---
 
 ### Week 2 Objectives:
+* Master foundational knowledge of Amazon EC2 cloud virtual servers and generations of compute resources.
+* Clearly understand firewall configuration mechanisms, remote connection methods, and attached block storage management.
 
-* Learn AWS services and free modules that can be directly applied to the project.
-* Deploy the actual project on an EC2 virtual machine and an RDS database.
+### Tasks to be carried out this week:
 
-### Tasks to be completed this week:
+| Day | Task | Start Date | Completion Date | Reference Material |
+| :--- | :--- | :--- | :--- | :--- |
+| **2** | - Study Amazon EC2 service: Instance types classification, operational mechanisms of Amazon Machine Images (AMI). | 05/11/2026 | 05/11/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| **3** | - Research Amazon EBS (Elastic Block Store) block storage solutions. Distinguish data transfer performance across gp2, gp3, and io2 volume types. | 05/12/2026 | 05/12/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| **4** | - Explore the launch process of cost-optimized EC2 instances for infrastructure deployment. | 05/13/2026 | 05/13/2026 | AWS Management Console |
+| **5** | - Research security mechanisms of Security Groups (instance-level virtual firewalls), inbound/outbound port rules, and secure authentication using Key Pairs. | 05/14/2026 | 05/14/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| **6** | - Examine secure remote connection methods including SSH for Linux OS and RDP for Windows OS.<br>- Research disk backup and restoration features using Snapshots. | 05/15/2026 | 05/15/2026 | <https://cloudjourney.awsstudygroup.com/> |
 
-| Day | Task | Start Date | End Date | Documentation |
-| --- | --- | --- | --- | --- |
-| Mon | - Learn AWS services and free modules applicable to the project: <br>&emsp; + EC2 (t3.micro) <br>&emsp; + RDS (db.t4g.micro) <br>&emsp; + Amazon GameLift <br>&emsp; + ElastiCache (cache.t3.micro) | 11/05/2026 | 11/05/2026 | |
-| Tue - Thu | - Initialize core resources: <br>&emsp; + Create an EC2 instance (t3.micro) with Ubuntu Linux. <br>&emsp; + Create an RDS instance (db.t4g.micro) running MySQL. <br>&emsp; + Configure a static IP for the server using Elastic IP. | 12/05/2026 | 14/05/2026 | |
-| Fri - Sat | - Configure and link resources: <br>&emsp; + Connect the RDS database to EC2. <br>&emsp; + Set inbound rules (launch-wizard-x). <br>&emsp; + Use spare disk space to create swap memory. | 15/05/2026 | 16/05/2026 | |
-| Sun | - Deploy the project: <br>&emsp; + Use pm2 to deploy directly on the EC2 VM. <br>&emsp; + Open ports so other machines can access the public IP. | 17/05/2026 | 17/05/2026 | |
-
-### Week 2 Results:
-
-* Identified the free AWS services/modules suitable for the project: EC2, RDS, Amazon GameLift, ElastiCache.
-* Successfully deployed the EC2 virtual machine (Ubuntu Linux, t3.micro) and the MySQL RDS database (db.t4g.micro).
-* Configured a static IP for the server using Elastic IP.
-* Completed the RDS-to-EC2 connection and inbound rule setup (launch-wizard-x) to allow access.
-* Optimized the VM by using spare disk space as swap memory.
-* Used pm2 to deploy the project directly on EC2 and opened access successfully via the public IP.
+### Week 2 Achievements:
+* Gained in-depth knowledge of lifecycle management, CPU/RAM allocation, and cost optimization for Amazon EC2 virtual servers.
+* Mastered multi-layer firewall rule configurations to protect application servers against unauthorized access.
+* Understood the core architecture of EBS block storage management, volume partitioning, and Snapshot backup mechanisms to ensure data integrity.

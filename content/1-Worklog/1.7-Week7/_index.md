@@ -7,28 +7,19 @@ pre: " <b> 1.7. </b> "
 ---
 
 ### Week 7 Objectives:
+* Research Amazon CloudFront Content Delivery Network (CDN) solutions for ultra-low latency global content distribution.
+* Study edge caching optimization methods and application firewall solutions for protecting the distribution layer.
 
-* Build the overall project system architecture diagram.
-* Review and compare classmates' assignments/projects to extract optimal solutions for the team project.
-* Explore and analyze the pros and cons of different architecture variants: traditional servers, Serverless, and hybrid architecture.
+### Tasks to be carried out this week:
 
-### Tasks to be completed this week:
+| Day | Task | Start Date | Completion Date | Reference Material |
+| :--- | :--- | :--- | :--- | :--- |
+| **2** | - Study operational principles of Content Delivery Network (CDN) architectures and the role of global Edge Locations. | 06/15/2026 | 06/15/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| **3** | - Research advanced application-layer security solutions integrated with AWS WAF (Web Application Firewall) to mitigate web vulnerabilities and malicious traffic targeting the CDN. | 06/16/2026 | 06/16/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| **4** | - Explore configuration processes for Amazon CloudFront Distributions using origin resources located on S3 Buckets or Load Balancers. | 06/17/2026 | 06/17/2026 | AWS CloudFront Console |
+| **5** | - Research edge cache optimization rules (Cache Behaviors) and optimal Time-To-Live (TTL) configuration strategies for cached content. | 06/18/2026 | 06/18/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| **6** | - Examine technical parameters and HTTP response headers for traffic analysis.<br>- Conduct a comprehensive review of all foundational cloud knowledge acquired over the 7-week period. | 06/19/2026 | 06/19/2026 |  |
 
-| Day | Task | Start Date | End Date | Documentation |
-| ---- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------- | ------------------ | ----------------- |
-| Mon | - Review classmates' project evaluations: <br>+ Analyze the architecture models used by other groups. <br>+ Discuss ideas with the team to select suitable solutions for the project. | 15/06/2026 | 15/06/2026 | |
-| Tue | - Design a traditional server architecture: <br>+ Draw a diagram: EC2 + RDS + Load Balancer. <br>+ Evaluate scalability and operational cost. | 16/06/2026 | 16/06/2026 | |
-| Wed | - Design hybrid architectures: <br>+ Model 1: EC2 + Supabase + Supabase Pooling. <br>+ Model 2: EC2 + RDS + RDS Proxy + Load Balancer. | 17/06/2026 | 17/06/2026 | |
-| Thu | - Design pure Serverless architectures: <br>+ Model 1: Lambda + AuroraDB + RDS Proxy. <br>+ Model 2: Lambda + AuroraDB + ElastiCache + RDS Proxy. | 18/06/2026 | 18/06/2026 | |
-| Fri | - Synthesize and finalize the project architecture: <br>+ Compare latency, cost, and maintainability across variants. <br>+ Finalize the architecture for the group project. | 19/06/2026 | 19/06/2026 | |
-
-### Week 7 Results:
-
-* Completed the review and cross-evaluation of classmates' projects, gaining new perspectives on resource allocation and data flow design for the team project.
-* Finished sketching and visualizing five infrastructure architecture variants:
-  * Traditional architecture: `EC2 + RDS + Load Balancer` — easy to understand but incurs fixed operational cost and requires careful Auto Scaling.
-  * Hybrid architecture 1: `EC2 + Supabase + Supabase Pooling` — combines EC2 compute with Backend-as-a-Service and reduces direct Postgres connections.
-  * Hybrid architecture 2: `EC2 + RDS + RDS Proxy + Load Balancer` — addresses database connection bottlenecks in the traditional model with an RDS Proxy buffer.
-  * Serverless architecture 1: `Lambda + AuroraDB + RDS Proxy` — cost-effective pay-per-use, with RDS Proxy preserving connection pooling and preventing Lambda from opening too many database connections under burst traffic.
-  * Serverless architecture 2: `Lambda + AuroraDB + ElastiCache + RDS Proxy` — the most comprehensive model. Adding ElastiCache reduces database queries and improves response time, but costs exceed the current project scale.
-* Sketching multiple variants helped the team understand tradeoffs between maintainability, performance, and cost, giving enough basis to finalize the system architecture.
+### Week 7 Achievements:
+* Understood technology solutions for accelerating web application response times and user interface rendering via global Edge Locations.
+* Developed edge caching management strategies, significantly reducing bandwidth transfer costs for origin servers.

@@ -1,55 +1,141 @@
 ---
-title: "Report on “Enterprise Cloud Architectures and Industry Application featuring Cloud Kinetics & Renova Cloud”"
-date: 2026-07-04
-weight: 2
+title: "Event 2"
+date: 2024-01-01
+weight: 1
 chapter: false
 pre: " <b> 4.2. </b> "
 ---
 
-| Information | Details                                                                                    |
-| ----------- | ------------------------------------------------------------------------------------------ |
-| Date        | 04/07/2026                                                                                 |
-| Location    | 26th Floor, Bitexco Tower, No. 02 Hai Trieu Street, Sai Gon Ward, Ho Chi Minh City         |
-| Role        | Online attendee                                                                            |
+
+# Summary Report: "FCAJ Community Day: Cloud-Native & Advanced Tech Sharing Session"
 
 ### Purpose of the Event
-- Create opportunities for Swinburne Vietnam students to gain practical insights into cloud computing and application architecture in enterprise environments.
-- Connect students with industry professionals currently working in the field through the AWS First Cloud AI Journey community to learn practical experiences.
 
-### List of Speakers
+- Share core knowledge and career pathways for transitioning infrastructure from traditional On-Premise environments to Cloud & DevOps.
+- Update pioneering solutions in the era of Artificial Intelligence (GraphRAG with Amazon Neptune) and intelligent security combining AWS WAF with Machine Learning.
+- Equip participants with methodologies to enhance team collaboration efficiency and effective project management skills.
+- Introduce application modernization technologies, including real-time communication mechanisms for Cloud Gaming (WebSockets) and containerization concepts (Docker).
 
-- **Mr. Nguyen Gia Hung** - Head of Solutions Architects in Vietnam & Cambodia, Amazon Web Services.
-- **Mr. Khang Nguyen** - Solutions Architect, Cloud Kinetics.
-- **Ms. Nhu Tran** - Account Manager, Amazon Web Services.
-- **Mr. Vinh Banh** - Senior Data Engineer, Renova Cloud.
+### Speaker List
+
+- **Vinh Tran** – *System Administrator at Central Retail Group*
+- **Viet Phat** – *AI Research Major at Swinburne University of Technology*
+- **Truong Huy Phuoc** – *Team Productivity & Project Management Specialist*
+- **Nguyen Quoc Bao** – *Cloud & Multiplayer Game Network Developer*
+- **Le Hoang Gia Dai** – *Cyber Security & Machine Learning Researcher, HUTECH University*
+- **Bao Huynh** – *Junior Cloud Native Developer at Endava Vietnam, Founder of ITea Lab*
+
+---
 
 ### Key Highlights
 
-#### Mr. Nguyen Gia Hung - Market overview and Cloud Computing career trends
-- The current IT job market is extremely harsh and highly competitive. Businesses have strict requirements even for intern positions, typically requiring candidates to have a good understanding of K8S.
-- Cloud is an irreversible trend, with a market size that has far exceeded traditional hardware devices. Large enterprises today all prioritize a Cloud-first strategy when developing applications.
-- The development of AI forces juniors to improve their capabilities to solve complex problems equivalent to the senior level.
+#### 1. Career Path from IT Helpdesk to Senior Sysadmin: Navigating the Shift to Cloud-DevOps
+Speaker Vinh Tran shared an inspiring, real-world career trajectory on shifting mindsets and technical skills from legacy infrastructure to cloud computing:
+- **Core Skills from Helpdesk:** Cultivating problem-solving mindsets under pressure, mastering end-user communication, and understanding foundational IT operations.
+- **The Cloud Mindset Pivot:** Shifting from managing physical servers and manual configurations (On-Premise) toward elastic scaling, pay-as-you-go economic models, and leveraging AWS Managed Services.
+- **Modern Infrastructure Pillars:** Mastering Infrastructure as Code (IaC via Terraform), Version Control Systems, and building DevOps culture through automated CI/CD pipelines and containerization.
+- **Crucial Lesson:** Never test directly in Production (`Never test in production`) to protect system availability and team reputation.
 
-#### Mr. Vinh Banh - The difference between studying at school and working in reality
-- The learning environment usually has clean data, clear requirements, and comfortable completion times. Conversely, the real-world environment requires handling complex data from multiple sources, constantly changing requirements, and extremely tight time pressure.
-- Need to master the framework instead of just rote learning how to use tools.
-- AI will support faster work but will not completely replace humans. Business understanding and communication skills are values that AI cannot replace.
+#### 2. AWS Neptune for Building a Graph Knowledge Base for GenAI (GraphRAG)
+Speaker Viet Phat introduced a hybrid Graph + LLM approach to address the inherent limitations of traditional Retrieval-Augmented Generation (RAG) in AI:
+- **Limitations of Traditional RAG:** Struggles with multi-hop reasoning or questions demanding deep comprehension of interconnected entities across multiple documents.
+- **The Power of GraphRAG:** Explicitly stores relationships using edges, significantly enhancing Relationship Awareness and contextual intelligence.
+- **Two Deployment Routes on AWS:**
+  * **Fully Managed Route:** Utilize *Amazon Bedrock Knowledge Bases* to automatically chunk data, extract entities, and generate embeddings; combined with *Amazon Neptune Analytics* acting as the graph engine to store and traverse relationships.
+  * **Custom Advanced Route:** Utilize *LlamaIndex* for data preparation and graph construction, followed by persistent storage in *Amazon Neptune* and multi-hop querying via Cypher Query Language.
 
-#### Ms. Nhu Tran - Overcoming fears and seizing opportunities
-- Students need to learn how to face and overcome the fear of making mistakes as well as the pressure from others' judgments.
-- Communication is an extremely important factor to avoid unnecessary misunderstandings in the workplace.
-- Proactively building presence through small talk will help bridge the gap with superiors.
+#### 3. High-Performance Teamwork and Project Productivity Optimization
+Speaker Truong Huy Phuoc synthesized core methodologies for team building and optimizing collective productivity:
+- **The 4 Golden Rules:** 
+  1. Clear and aligned shared goals (Clear & Shared Goals).
+  2. Assigning the right person to the right position based on competency (Right Person, Right Place).
+  3. Fostering open communication and active listening (Open Communication & Active Listening).
+  4. Elevating personal accountability toward shared outcomes (Personal Accountability).
+- **Leveraging Digital Tools:** Visualizing project progress via *Trello, ClickUp*; optimizing collaborative workspaces and document sharing through *Google Workspace, Slack, Discord*.
 
-#### Mr. Khang Nguyen - Skills, Mindset, and pressure from AI
-- Students can use AI tools to assist with assignments, but absolutely must not outsource their entire thinking to AI.
-- It is necessary to clearly understand the root of knowledge instead of just relying on the output results.
-- For Fresher positions, employers value attitude the most, followed by professional qualifications and practical experience.
+#### 4. Multiplayer in the Cloud: Connecting Godot Clients with AWS WebSockets
+Speaker Nguyen Quoc Bao demonstrated real-time multiplayer game system architectures built entirely on AWS Serverless:
+- **Protocol Selection:** Compared to HTTP Polling (high latency) or UDP/ENet (complex configuration), WebSockets represent the optimal choice for turn-based games, lobbies, and chat features due to full-duplex, reliable real-time communication.
+- **AWS Serverless Architecture Design:** 
+  * **Godot Client:** Connects using GDScript via `WebSocketPeer`.
+  * **Amazon API Gateway (WebSocket API):** Manages persistent connections and routes requests using Route Keys (`$request.body.action`).
+  * **AWS Lambda & Amazon DynamoDB:** Lambda executes game logic asynchronously; DynamoDB tracks player `connectionId` states.
+  * **Technical Challenges:** Managing stale connections (`GoneException`), optimizing DynamoDB table scan costs, and handling Lambda's stateless nature—opening pathways toward *AWS GameLift* for high-frequency competitive games.
 
-### What I Learned
-- Enhance presence: You cannot just passively practice skills but must also proactively expand your network of relationships and participate in professional communities.
-- Invest in long-term value: Continuously improve yourself and demonstrate a lifelong learning spirit to enhance your competitive value in the eyes of employers.
-- Broaden business perspectives: When orienting your career, do not just focus on technical expertise but also equip yourself with knowledge about the specific business characteristics of particular industry groups.
+#### 5. Combining AWS WAF with Machine Learning for Advanced Network Intrusion Detection
+Speaker Le Hoang Gia Dai presented an AI and data-driven security solution to safeguard cloud infrastructure:
+- **Limitations of Traditional AWS WAF:** Relies heavily on signature-based matching rules, making it inflexible against zero-day exploits or complex anomalous requests.
+- **ML-Based Network Intrusion Detection Systems (NIDS):** Trained machine learning models on the benchmark `CSE-CIC-IDS2018` dataset to detect anomalous behavior while addressing data imbalance across minority attack classes.
+- **Collaborative Security Workflow:** Combined ML predictions with real-time logs from *AWS WAF*, visualized through live monitoring dashboards to significantly boost Threat Visibility.
 
-#### Proof of participation
+#### 6. Docker - A Containerization Technology
+Speaker Bao Huynh delivered deep architectural insights into the evolution from traditional virtualization to containerization:
+- **Drawbacks of Legacy Virtual Machines:** Each VM requires a full guest Operating System (OS), consuming massive CPU, RAM, and storage overhead while complicating patch management.
+- **Essence of Containerization:** Packages applications along with all dependencies and configurations into a single isolated unit, guaranteeing consistent execution across environments from Local Dev to Production.
+- **Dockerfile Architecture & Image Layering:** Every Dockerfile instruction (`FROM`, `RUN`, `COPY`, `CMD`) produces a distinct layer. Docker optimizes build processes by reusing cached, unchanged layers. When a layer changes, only that layer and subsequent layers are rebuilt.
 
-![Event](Event2.jpg)
+---
+
+### Key Takeaways
+
+#### Design Mindset
+- **Portfolio-First Mindset:** Practical experience gained by designing, deploying, and operating real-world projects carries far greater value in hiring than holding theoretical certifications alone.
+- **Graph-Oriented Thinking:** Data does not exist in isolation but in complex interconnectivity; modeling data as graphs (Nodes/Edges) allows AI systems to solve complex GenAI problems with higher precision.
+- **Proactive Defense Mindset:** Modern infrastructure security goes beyond static firewalls (WAF), requiring behavioral monitoring via Machine Learning to detect risks proactively.
+
+#### Technical Architecture
+- Deeply understood **Docker** image layering and build caching mechanisms, enabling the creation of standardized, optimized Dockerfiles.
+- Mastered **Serverless WebSockets** architecture on AWS by combining `API Gateway, Lambda, and DynamoDB` to build cost-effective, real-time interactive systems.
+- Learned to evaluate and select appropriate GraphRAG solutions (Managed vs Custom) on Amazon Neptune based on project scale and control requirements.
+
+---
+
+### Practical Application
+
+- **Implement Docker in Academic Projects:** Containerize existing course projects using Docker to ensure environment parity from local machines to test environments.
+- **Revamp Professional Resume & Portfolio:** Restructure CVs to highlight hands-on projects and architectural solutions designed from scratch, aligning with enterprise hiring expectations.
+- **Apply the 4 Golden Rules to Group Work:** Use Trello/ClickUp to break down tasks clearly among teammates and establish dedicated Discord channels for transparent communication.
+- **Experiment with Real-Time Architectures:** Build a mini chat application or basic turn-based game using AWS API Gateway WebSockets and Lambda to practice managing persistent connection states.
+
+---
+
+### Event Experience
+
+Attending the **FCAJ Community Day** sharing sessions provided me with a comprehensive technical experience, bridging foundational soft skills with deep architectural concepts.
+
+#### Insights from Industry Experts
+- Presentations reflected real enterprise challenges from major organizations like Central Retail Group and Endava.
+- Career advice from Mr. Vinh Tran helped me avoid the common pitfall of learning too many technologies at once without mastering a core competency.
+
+#### Hands-On Technical Experience
+- Gained visual clarity on system architecture diagrams for production systems. Seeing signals traverse from Godot Clients through API Gateway to trigger Lambda, or how raw data transforms into Knowledge Graphs on Amazon Neptune, significantly strengthened my systems thinking.
+- Understood practical operational challenges, such as handling dataset imbalances in security AI and optimizing cloud database scan costs.
+
+#### Networking & Exchange
+- The event cultivated an open environment where participants freely asked questions, debated ideas, and learned from one another, embodying the FCAJ community's culture of Continuous Learning and Shared Responsibility.
+
+#### Lessons Learned
+- Starting points do not dictate success; persistence and incremental progress through hands-on projects are key to successfully transitioning into Cloud & DevOps.
+- Traditional signature-based firewalls and standard RAG models are no longer sufficient for modern workloads; mastering Machine Learning, Graph Databases (Amazon Neptune), and Event-Driven Architectures (Serverless WebSockets) forms the core competitive edge for next-generation Cloud Engineers.
+
+---
+
+### Event Gallery
+
+<div align="center" style="width: 100%; margin: 0 auto; padding: 10px;">
+  <div style="display: flex; flex-wrap: nowrap; justify-content: center; gap: 6px; line-height: 0; margin-bottom: 6px;">
+    <!-- ROW 1: 3 images -->
+    <img src="/images/4-Event/Event2/event2(1).jpg" style="width: 33.33%; display: block; object-fit: cover; aspect-ratio: 4/3; margin: 0;" />
+    <img src="/images/4-Event/Event2/event2(2).jpg" style="width: 33.33%; display: block; object-fit: cover; aspect-ratio: 4/3; margin: 0;" />
+    <img src="/images/4-Event/Event2/event2(3).jpg" style="width: 33.33%; display: block; object-fit: cover; aspect-ratio: 4/3; margin: 0;" />
+  </div>
+  
+  <div style="display: flex; flex-wrap: nowrap; justify-content: center; gap: 6px; line-height: 0;">
+    <!-- ROW 2: 3 images -->
+    <img src="/images/4-Event/Event2/event2(4).jpg" style="width: 33.33%; display: block; object-fit: cover; aspect-ratio: 4/3; margin: 0;" />
+    <img src="/images/4-Event/Event2/event2(5).jpg" style="width: 33.33%; display: block; object-fit: cover; aspect-ratio: 4/3; margin: 0;" />
+    <img src="/images/4-Event/Event2/event2(6).jpg" style="width: 33.33%; display: block; object-fit: cover; aspect-ratio: 4/3; margin: 0;" />
+  </div>
+  
+  <p style="margin-top: 20px; margin-bottom: 0;"><i>Presentations at FCAJ Community Day</i></p>
+</div>

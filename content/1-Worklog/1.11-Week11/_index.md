@@ -7,15 +7,15 @@ pre: " <b> 1.11. </b> "
 ---
 
 ### Week 11 Objectives:
+* Consolidate all individual work data to finalize the Internship Report documentation.
+* Review and verify report formatting and quality.
 
-* Submit the final internship report and wait for approval.
+### Tasks to be carried out this week:
 
-### Tasks to be completed this week:
+| Day | Task | Start Date | Completion Date | Reference Material |
+| :--- | :--- | :--- | :--- | :--- |
+| **2-3** | - Gather configuration screenshots and personal task records from Week 1 through Week 10. | 07/13/2026 | 07/14/2026 |  |
+| **4** | - Review and proofread the report to correct typographical and grammatical errors. | 07/15/2026 | 07/15/2026 |  |
 
-| Day | Task | Start Date | End Date | Documentation |
-| ------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------- | ------------------ | ----------------- |
-| Mon - Sun | - Review the full internship report one last time. <br> - Submit the official report to the supervisor/advisor and wait for approval. | 13/07/2026 | 19/07/2026 | |
-
-### Week 11 Results:
-
-* Successfully submitted the report and are awaiting evaluation/approval.
+### Week 11 Achievements:
+* Successfully compiled a complete individual Internship Report with a clear and professional structure.

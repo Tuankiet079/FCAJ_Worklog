@@ -7,26 +7,20 @@ pre: " <b> 1.3. </b> "
 ---
 
 ### Week 3 Objectives:
+* Master infrastructure knowledge of Amazon S3 unlimited object storage service.
+* Configure security policies, data access permissions, and explore static website hosting solutions.
 
-* Set up AWS cost management and configure basic security and access control.
-* Learn and practice network configuration (VPC), DNS (Route53), and CLI management tools.
-* Apply automation to resource management (auto start/stop EC2, RDS) and explore AWS's new AI service.
+### Tasks to be carried out this week:
 
-### Tasks to be completed this week:
+| Day | Task | Start Date | Completion Date | Reference Material |
+| :--- | :--- | :--- | :--- | :--- |
+| **2** | - Study the Object Storage architecture of Amazon S3: Understanding data entities (Objects) and storage containers (Buckets). | 05/18/2026 | 05/18/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| **3** | - Distinguish technical features and operational costs across Storage Classes, including S3 Standard, Intelligent-Tiering, and Glacier for long-term archiving. | 05/19/2026 | 05/19/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| **4** | - Explore file management processes, logical directory hierarchies, and remote data synchronization to cloud buckets. | 05/20/2026 | 05/20/2026 | AWS Management Console |
+| **5** | - Conduct in-depth research on data-at-rest security mechanisms in Amazon S3, including Block Public Access rules and Bucket Policies. | 05/21/2026 | 05/21/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| **6** | - Examine the principles and operation of S3 Static Website Hosting.<br>- Configure JSON-based access control policies (ACLs) and automated data Lifecycle Policies. | 05/22/2026 | 05/22/2026 | <https://cloudjourney.awsstudygroup.com/> |
 
-| Day | Task | Start Date | End Date | Documentation / Notes |
-| --- | --- | --- | --- | --- |
-| Mon | - Set up account and cost management with AWS Budgets. <br> - Create two free alerts: Actual 80% and Forecasted 100% for a $10 budget. | 18/05/2026 | 18/05/2026 | |
-| Tue | - Set up Amazon VPC. <br> - Create and manage IAM user/role to obtain AWS Access Key ID and Secret Access Key. | 19/05/2026 | 19/05/2026 | |
-| Wed - Thu | - Configure and use AWS CLI on Ubuntu EC2 via IAM user. <br> - Explore and try deploying Route53. | 20/05/2026 | 21/05/2026 | Forgot to turn off Route53 and was charged $20 |
-| Fri | - Learn about AWS Bedrock. | 22/05/2026 | 22/05/2026 | |
-| Sat - Sun | - Set up automatic EC2 and RDS start/stop using Lambda functions and Amazon EventBridge. | 23/05/2026 | 24/05/2026 | |
-
-### Week 3 Results:
-
-* Successfully configured AWS Budgets alerts (80% actual and 100% forecast for a $10 budget).
-* Completed Amazon VPC and IAM setup, and obtained Access Key ID and Secret Access Key.
-* Configured and used AWS CLI on Ubuntu EC2.
-* Gained practical experience with Route53 and learned a resource management lesson from a $20 charge.
-* Obtained an overview of AWS Bedrock AI services.
-* Optimized cost by automating EC2 and RDS start/stop with Lambda functions and Amazon EventBridge.
+### Week 3 Achievements:
+* Developed a deep understanding of cloud object storage architecture, clearly distinguishing between block storage (EBS) and unstructured object storage (S3).
+* Built a strong data security mindset, writing precise JSON permission policy structures to secure large-scale data buckets.
+* Mastered the setup and configuration of Static Website Endpoints to serve HTML websites securely directly on Amazon S3 infrastructure.

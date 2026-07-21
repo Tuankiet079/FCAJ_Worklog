@@ -1,38 +1,40 @@
 ---
 title: "Internship Report"
-date: 2026-07-13
+date: 2024-01-01
 weight: 1
 chapter: false
 ---
 
 # Internship Report
 ### Student Information:
-&emsp; **Full Name:** Bui Binh Nguyen
+&emsp; **Full Name:** Luu Tuan Kiet
 
-&emsp; **Phone:** 0344898294
+&emsp; **Phone Number:** 0384868794
 
-&emsp; **Email:** hoilamgiaaz@gmail.com
+&emsp; **Email:** luutuankiet794@gmail.com
 
 &emsp; **University:** Ho Chi Minh City University of Technology (HUTECH)
 
 &emsp; **Major:** Information Technology
 
-&emsp; **Class:** 22DTHE5
+&emsp; **Class:** 22DTHE7
 
-&emsp; **Internship Company:** Amazon Web Services Vietnam Co., Ltd.
+&emsp; **Host Company:** Amazon Web Services Vietnam Co., Ltd.
 
-&emsp; **Position:** Workforce Bootcamp - First Cloud AI Journey
+&emsp; **Internship Position:** Workforce Bootcamp - First Cloud AI Journey
 
-&emsp; **Internship Period:** From May 4, 2026 to July 30, 2026
+&emsp; **Internship Duration:** From May 4, 2026 to July 30, 2026
 
-![Bui Binh Nguyen](avatar.png)
+![Luu Tuan Kiet](avatar.jpg)
 
-### Report Contents
 
-1.  [Worklog](1-Worklog/)
-2.  [Proposal](2-Proposal/)
-3.  [Blogs Posted](3-BlogsPosted/)
-4.  [Events Participated](4-EventParticipated/)
-5.  [Workshop](5-Workshop/)
-6.  [Self-evaluation](6-Self-evaluation/)
-7.  [Feedback](7-Feedback/)
+
+### Table of Contents
+
+1. [Worklog](1-Worklog/)
+2. [Proposal](2-Proposal/)
+3. [Posted Blogs](3-BlogsPosted/)
+4. [Attended Events](4-EventParticipated/)
+5. [Workshop](5-Workshop/)
+6. [Self-Evaluation](6-Self-evaluation/)
+7. [Feedback & Suggestions](7-Feedback/)

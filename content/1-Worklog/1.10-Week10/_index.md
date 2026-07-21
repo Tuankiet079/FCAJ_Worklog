@@ -7,15 +7,16 @@ pre: " <b> 1.10. </b> "
 ---
 
 ### Week 10 Objectives:
+* Collaborate with the team to perform testing and validation of core system functionalities.
+* Receive feedback from team members to resolve emerging network and infrastructure connectivity issues.
 
-* Perform testing and finalize the final system version.
+### Tasks to be carried out this week:
 
-### Tasks to be completed this week:
+| Day | Task | Start Date | Completion Date | Reference Material |
+| :--- | :--- | :--- | :--- | :--- |
+| **2-5** | - Receive bug reports and feedback from application developers; perform network configuration checks and troubleshoot infrastructure issues. | 07/06/2026 | 07/09/2026 |  |
+| **6** | - Conduct a final review with the team, lock in the stable system build, and finalize overall architecture documentation. | 07/10/2026 | 07/10/2026 |  |
 
-| Day | Task | Start Date | End Date | Documentation |
-| ----- | --------------------------------------------------------------------------------------------------------------------------------------------- | ---------------- | ------------------ | ----------------- |
-| Mon - Tue | - Test functional flows, APIs, and system performance. <br> - Fix bugs and finalize a stable code version. | 06/07/2026 | 07/07/2026 | |
-
-### Week 10 Results:
-
-* Completed testing and confirmed that the system meets requirements.
+### Week 10 Achievements:
+* Successfully completed integration testing alongside the team.
+* Resolved all technical issues and configuration conflicts identified during test runs.

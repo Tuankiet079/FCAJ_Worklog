@@ -7,24 +7,20 @@ pre: " <b> 1.2. </b> "
 ---
 
 ### Mục tiêu tuần 2:
-
-* Tìm hiểu các dịch vụ AWS và các module miễn phí có thể ứng dụng trực tiếp vào đồ án.
-* Triển khai dự án thực tế trên máy ảo EC2 và cơ sở dữ liệu RDS.
+* Làm chủ kiến thức nền tảng về dịch vụ máy chủ ảo đám mây Amazon EC2 và các thế hệ tài nguyên tính toán.
+* Hiểu rõ cơ chế thiết lập phòng tuyến tường lửa, kết nối điều khiển từ xa và quản lý khối lưu trữ đi kèm máy chủ.
 
 ### Các công việc cần triển khai trong tuần này:
 
 | Thứ | Công việc | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu |
-| --- | --- | --- | --- | --- |
-| 2  | - Tìm hiểu các dịch vụ AWS và module miễn phí có thể ứng dụng vào đồ án: <br>&emsp; + EC2 (t3.micro) <br>&emsp; + RDS (db.t4g.micro) <br>&emsp; + Amazon Gamelift <br>&emsp; + ElastiCache (cache.t3.micro) | 11/05/2026 | 11/05/2026 |
-| 3 - 5 | - Khởi tạo tài nguyên cơ bản: <br>&emsp; + Tạo EC2 (t3.micro) với hệ điều hành Ubuntu Linux. <br>&emsp; + Tạo RDS (db.t4g.micro) chạy MySQL. <br>&emsp; + Thiết lập IP tĩnh cho server bằng Elastic IP. | 12/05/2026 | 14/05/2026 |
-| 6 - 7 | - Cấu hình và liên kết tài nguyên: <br>&emsp; + Liên kết db RDS đến EC2. <br>&emsp; + Thiết lập inbound rule (launch-wizard-x). <br>&emsp; + Tận dụng ổ cứng dư thừa để cắt làm RAM ảo. | 15/05/2026 | 16/05/2026 |
-| CN | - Deploy dự án: <br>&emsp; + Sử dụng pm2 để deploy ngay trên máy ảo EC2. <br>&emsp; + Mở cổng để máy khác có thể truy cập vào public IP. | 17/05/2026 | 17/05/2026 |
+| :--- | :--- | :--- | :--- | :--- |
+| **2** | - Tìm hiểu dịch vụ Amazon EC2: Phân loại các dòng máy chủ ảo (Instance Types), cơ chế hoạt động của các gói ảnh ảo hệ điều hành AMI (Amazon Machine Image). | 11/05/2026 | 11/05/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| **3** | - Nghiên cứu giải pháp lưu trữ khối Amazon EBS (Elastic Block Store). Phân biệt hiệu năng truyền tải dữ liệu giữa các thế hệ ổ đĩa gp2, gp3 và io2. | 12/05/2026 | 12/05/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| **4** | - Khảo sát quy trình khởi tạo máy chủ ảo EC2 Instance thuộc dòng cấu hình tối ưu chi phí phục vụ hoạt động triển khai hạ tầng. | 13/05/2026 | 13/05/2026 | AWS Management Console |
+| **5** | - Nghiên cứu cơ chế bảo mật của Security Group (Tường lửa ảo cấp máy chủ), các quy tắc đóng/mở cổng dịch vụ và phương thức xác thực bằng cặp khóa Key Pair an toàn. | 14/05/2026 | 14/05/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| **6** | - Khảo sát các phương thức kết nối điều khiển từ xa bảo mật bao gồm giao thức SSH đối với hệ điều hành Linux và giao thức RDP đối với Windows.<br>- Nghiên cứu tính năng sao lưu dự phòng ổ đĩa cứng thông qua cơ chế Snapshot. | 15/05/2026 | 15/05/2026 | <https://cloudjourney.awsstudygroup.com/> |
 
 ### Kết quả đạt được tuần 2:
-
-* Nắm rõ và xác định được các dịch vụ/module AWS miễn phí phù hợp cho đồ án: EC2, RDS, Amazon Gamelift, ElastiCache.
-* Triển khai thành công máy ảo EC2 (Ubuntu Linux, t3.micro) và cơ sở dữ liệu RDS (MySQL, db.t4g.micro).
-* Đã thiết lập thành công IP tĩnh cho server thông qua Elastic IP.
-* Hoàn tất liên kết cơ sở dữ liệu RDS vào EC2 và cấu hình Inbound rule (launch-wizard-x) để cho phép kết nối.
-* Tối ưu hóa được máy ảo bằng cách tận dụng ổ cứng dư thừa làm RAM ảo.
-* Đã sử dụng pm2 để deploy dự án trực tiếp trên EC2 và mở cổng thành công, cho phép truy cập từ public IP.
+* Nắm vững kiến thức chuyên sâu về quản lý vòng đời, phân bổ CPU/RAM và tối ưu hóa chi phí vận hành máy chủ ảo Amazon EC2.
+* Thành thạo tư duy cấu hình quy tắc tường lửa đa lớp để bảo vệ máy chủ ứng dụng trước các truy cập trái phép.
+* Hiểu bản chất quản lý hạ tầng lưu trữ dạng khối EBS, cơ chế thiết lập phân vùng và sao lưu Snapshot bảo vệ an toàn toàn vẹn dữ liệu hệ thống.

@@ -7,26 +7,20 @@ pre: " <b> 1.3. </b> "
 ---
 
 ### Mục tiêu tuần 3:
-
-* Thiết lập quản lý chi phí AWS và cấu hình bảo mật, phân quyền truy cập cơ bản.
-* Tìm hiểu và thực hành cấu hình mạng (VPC), DNS (Route53) và các công cụ quản lý qua CLI.
-* Ứng dụng tự động hóa trong việc quản lý tài nguyên (tự động bật/tắt EC2, RDS) và tìm hiểu dịch vụ AI mới của AWS.
+* Nắm vững kiến thức hạ tầng về dịch vụ lưu trữ đối tượng không giới hạn Amazon S3.
+* Cấu hình các cơ chế chính sách bảo mật, phân quyền dữ liệu và tìm hiểu giải pháp lưu trữ trang web tĩnh.
 
 ### Các công việc cần triển khai trong tuần này:
 
-| Thứ | Công việc | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu / Ghi chú |
-| --- | --- | --- | --- | --- |
-| 2 | - Thiết lập quản lý tài khoản và chi phí bằng AWS Budgets. <br> - Cài đặt 2 cảnh báo miễn phí: Actual 80% và Forecasted 100% trong ngân sách 10 USD. | 18/05/2026 | 18/05/2026 |
-| 3 | - Thiết lập Amazon VPC. <br> - Tạo và quản lý IAM User/Role để lấy AWS Access Key ID và AWS Secret Access Key. | 19/05/2026 | 19/05/2026 |
-| 4 - 5 | - Tìm hiểu và cấu hình AWS CLI trên môi trường Ubuntu EC2 thông qua IAM User. <br> - Tìm hiểu và thử triển khai dịch vụ Route53. | 20/05/2026 | 21/05/2026 | Quên tắt Route53 và bị trừ 20 đô |
-| 6 | - Tìm hiểu về dịch vụ AI của AWS: AWS Bedrock. | 22/05/2026 | 22/05/2026 |
-| 7 - CN | - Thiết lập tự động bật/tắt EC2 và RDS bằng cách sử dụng kết hợp Lambda Function và Amazon EventBridge. | 23/05/2026 | 24/05/2026 |
+| Thứ | Công việc | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu |
+| :--- | :--- | :--- | :--- | :--- |
+| **2** | - Tìm hiểu cấu trúc kiến trúc Object Storage của Amazon S3: Định nghĩa về thực thể dữ liệu (Object) và kho chứa (Bucket). | 18/05/2026 | 18/05/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| **3** | - Phân biệt đặc tính kỹ thuật và chi phí vận hành của các lớp dữ liệu lưu trữ (Storage Classes) bao gồm S3 Standard, Intelligent-Tiering, Glacier phục vụ lưu trữ lâu dài. | 19/05/2026 | 19/05/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| **4** | - Khảo sát quy trình quản lý tệp tin, phân cấp cấu trúc thư mục logic và cách thức đồng bộ hóa dữ liệu từ xa lên kho chứa đám mây. | 20/05/2026 | 20/05/2026 | AWS Management Console |
+| **5** | - Nghiên cứu chuyên sâu các cơ chế bảo mật dữ liệu tĩnh trên Amazon S3 bao gồm: Quy tắc chặn truy cập công cộng (Block Public Access) và chính sách kiểm soát quyền hạn Bucket Policy. | 21/05/2026 | 21/05/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| **6** | - Khảo sát nguyên lý hoạt động của giải pháp lưu trữ và phân phối trang web tĩnh (Static Website Hosting) được tích hợp sẵn trên nền tảng Amazon S3.<br>- Thiết lập các chính sách JSON phân quyền mở rộng (ACLs) và chính sách vòng đời dữ liệu (Lifecycle Policies). | 22/05/2026 | 22/05/2026 | <https://cloudjourney.awsstudygroup.com/> |
 
 ### Kết quả đạt được tuần 3:
-
-* Đã cấu hình thành công công cụ cảnh báo chi phí AWS Budgets (ngưỡng 80% và 100% cho ngân sách 10$).
-* Thiết lập xong mạng Amazon VPC và phân quyền IAM, lấy thành công Access Key ID và Secret Access Key.
-* Cấu hình và sử dụng được AWS CLI trên môi trường máy ảo Ubuntu EC2.
-* Đã có kinh nghiệm thực tế triển khai Route53 (và rút ra bài học quản lý tài nguyên khi bị trừ 20$).
-* Nắm được tổng quan về dịch vụ AI AWS Bedrock.
-* Tối ưu hoá được chi phí bằng cách tự động hoá việc bật/tắt EC2 và RDS thông qua Lambda Function và Amazon EventBridge.
+* Hiểu sâu kiến trúc lưu trữ dạng đối tượng đám mây, phân biệt rõ bản chất sử dụng giữa lưu trữ dạng khối (EBS) và dạng đối tượng không cấu trúc (S3).
+* Xây dựng tư duy kiểm soát an toàn thông tin vững chắc, viết cấu trúc chính sách JSON phân quyền chính xác để bảo vệ kho lưu trữ dữ liệu lớn.
+* Nắm vững phương pháp đưa vào vận hành, cấu hình Endpoint phân phối một trang web HTML tĩnh chạy trực tiếp an toàn trên hạ tầng dịch vụ Amazon S3.

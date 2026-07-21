@@ -7,22 +7,19 @@ pre: " <b> 1.1. </b> "
 ---
 
 ### Week 1 Objectives:
+* Connect and get acquainted with members of First Cloud AI Journey and establish a collaborative workflow.
+* Understand the general infrastructure of basic AWS services, the operational mechanisms of the AWS Management Console, and the AWS CLI.
 
-* Learn about AWS services and how to navigate the First Cloud AI Journey learning process.
-* Find team members and confirm the project topic: Building a Game RESTful API Server using AWS services.
-* Attend a workshop to understand free AWS offerings and AI applications.
+### Tasks to be carried out this week:
 
-### Tasks to be completed this week:
+| Day | Task | Start Date | Completion Date | Reference Material |
+| :--- | :--- | :--- | :--- | :--- |
+| **2** | - Attend the Kick-off session, network, and get acquainted with members of the First Cloud AI Journey program.<br>- Read and study internship unit rules, operational regulations, and the work roadmap. | 05/04/2026 | 05/04/2026 | <https://hcm-rules.awsfcaj.com/> |
+| **3** | - Learn about the AWS Cloud computing platform and basic service categories including: Compute, Storage, Networking, and Database. | 05/05/2026 | 05/05/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| **4** | - Study the terms and conditions of the AWS Free Tier account.<br>- Explore system management structure via the graphical interface (AWS Console) and command line interface (AWS CLI). | 05/06/2026 | 05/06/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| **5** | - Learn foundational concepts of Identity and Access Management (IAM).<br>- Distinguish security roles between the Root account and IAM User accounts. | 05/07/2026 | 05/07/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| **6** | - Study group-based permission mechanisms (IAM Group) and JSON-based security policies.<br>- Learn how to enable Multi-Factor Authentication (MFA). | 05/08/2026 | 05/08/2026 | <https://cloudjourney.awsstudygroup.com/> |
 
-| Day | Task | Start Date | End Date | Documentation / Notes |
-| --- | --- | --- | --- | --- |
-| Mon - Fri | - Learn about AWS services. <br> - Learn how to navigate the First Cloud AI Journey learning process. <br> - Find team members. <br> - Confirm the project topic: Building a Game RESTful API Server with AWS services. | 04/05/2026 | 08/05/2026 | First Cloud AI Journey |
-| Sat | - Attend the workshop. <br> - Learn about free AWS features that can be leveraged: EC2, DynamoDB, S3, Lambda, Bedrock… <br> - Optimize effective AI usage. <br> - Learn about AI prompt generation websites. | 09/05/2026 | 09/05/2026 | Workshop content |
-
-### Week 1 Results:
-
-* Gained an overview of AWS services and the learning process at First Cloud AI Journey.
-* Found team members and successfully finalized the project topic: Building a Game RESTful API Server with AWS services.
-* Attended the workshop on Saturday (09/05/2026) ([proof image](/images/evidence/chung-nhan-tuan-1.jpg)).
-* Identified a list of free AWS features that could be used for the project, such as EC2, DynamoDB, S3, Lambda, Bedrock…
-* Learned techniques to optimize AI usage effectively and discovered AI prompt generation websites.
+### Week 1 Achievements:
+* Quickly integrated into the new working environment and established positive interactions with members of First Cloud AI Journey.
+* Acquired a clear overview of global cloud infrastructure and core AWS services.
