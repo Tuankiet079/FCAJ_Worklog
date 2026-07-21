@@ -34,5 +34,5 @@ Automation & Maintenance Layer:
      * API Infrastructure: Calls `start_maintenance` and `stop_maintenance` functions to update system status via API Gateway stage variables using AWS SDK.
      * Database Maintenance: Periodically triggers `vacuum & analyze` function to optimize DB performance and `reset_daily` function to refresh world progression daily.
 
-![overview](/images/diagram.png)
+![overview](images/diagram.png)
 <div align="center"><i>Figure 5.1.1: Overall system architecture diagram.</i></div>
