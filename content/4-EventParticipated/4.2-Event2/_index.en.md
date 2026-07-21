@@ -125,9 +125,9 @@ Attending the **FCAJ Community Day** sharing sessions provided me with a compreh
 <div align="center" style="width: 100%; margin: 0 auto; padding: 10px;">
   <div style="display: flex; flex-wrap: nowrap; justify-content: center; gap: 6px; line-height: 0; margin-bottom: 6px;">
     <!-- ROW 1: 3 images -->
-    <img src="/images/4-Event/Event2/event2(1).jpg" style="width: 33.33%; display: block; object-fit: cover; aspect-ratio: 4/3; margin: 0;" />
-    <img src="/images/4-Event/Event2/event2(2).jpg" style="width: 33.33%; display: block; object-fit: cover; aspect-ratio: 4/3; margin: 0;" />
-    <img src="/images/4-Event/Event2/event2(3).jpg" style="width: 33.33%; display: block; object-fit: cover; aspect-ratio: 4/3; margin: 0;" />
+    <img src="images/4-Event/Event2/event2(1).jpg" style="width: 33.33%; display: block; object-fit: cover; aspect-ratio: 4/3; margin: 0;" />
+    <img src="images/4-Event/Event2/event2(2).jpg" style="width: 33.33%; display: block; object-fit: cover; aspect-ratio: 4/3; margin: 0;" />
+    <img src="images/4-Event/Event2/event2(3).jpg" style="width: 33.33%; display: block; object-fit: cover; aspect-ratio: 4/3; margin: 0;" />
   </div>
   
   <div style="display: flex; flex-wrap: nowrap; justify-content: center; gap: 6px; line-height: 0;">
